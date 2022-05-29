@@ -22,4 +22,4 @@ Yeo Yu Jie: yeo.yujie@gmail.com\
 \
 Project Link: https://github.com/JasonYapzx/Payeo.git \
 \
-Currently deployed on Netifly: https://main--steady-lamington-29fbca.netlify.app/login
+Currently deployed on Netifly: https://steady-lamington-29fbca.netlify.app/
