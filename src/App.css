@@ -9,12 +9,13 @@
   --color-4: grey;
   --color-5: #eb4034;
   --color-6: #333;
+  --color-7: #3d3d3d;
 }
 
 /* App container */
 .app_container {
   overflow-y: hidden;
-  max-height: 100vh;
+  height: 100vh;
   width: auto;
 }
 
@@ -48,6 +49,11 @@ section h3 {
   text-align: center;
   font-size: 20px;
   color: var(--color-4);
+}
+.logout_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 /* Register */
 section .form {
@@ -130,13 +136,16 @@ section .form {
 .home_container {
   display: flex;
   height: auto;
-  max-height: 91vh;
   width: auto;
 }
-.users_container {
-  min-width: 300px;
-  border-right: 2px solid var(--color-6);
+.users {
   overflow-y: auto;
+  max-height: 100vh;
+}
+.users_container {
+  min-width: 390px;
+  border-right: 2px solid var(--color-6);
+  height: auto;
 }
 .user_wrapper {
   margin-bottom: 10px;
@@ -145,15 +154,19 @@ section .form {
 }
 .user_info {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
 .user_detail {
   display: flex;
+  width: auto;
   align-items: center;
 }
-.user_detail h4 {
+.user_detail_div {
   margin-left: 10px;
+  margin-top: 10px;
+  max-width: 200px;
 }
 .avatar {
   width: 50px;
@@ -174,12 +187,13 @@ section .form {
 }
 .messages_container {
   display: flex;
+  flex-grow: 1;
+  width: auto;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
 }
 .messages_user {
   padding: 10px;
+  width: 100%;
   text-align: center;
   border-bottom: 2px solid var(--color-6);
 }
@@ -210,12 +224,16 @@ section .form {
 }
 .messages {
   height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   border-bottom: 1px solid var(--color-6);
 }
 .message_wrapper {
-  margin-top: 5px;
-  padding: 0px 5px;
+  margin-bottom: 5px;
+  width: auto;
+  flex-grow: 1;
+  padding: 0px 5px;  
 }
 .message_wrapper img {
   width: 100%;
@@ -224,7 +242,6 @@ section .form {
 .message_wrapper p {
   padding: 10px;
   display: inline-block;
-  max-width: 50%;
   text-align: left;
   border-radius: 5px;
 }
@@ -239,9 +256,16 @@ section .form {
 .me {
   background: var(--color-3);
   color: white;
+  word-wrap: break-word;
+  max-width: 500px;
+  margin-right: 10px;
 }
 .friend {
   background: var(--color-6);
+  color: white;
+  max-width: 500px;
+  margin-left: 20px;
+  word-wrap: break-word;
 }
 .selected_user {
   background: var(--color-6);
@@ -249,12 +273,11 @@ section .form {
 .truncate {
   font-size: 14px;
   white-space: nowrap;
-  width: 90%;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
 }
 .truncate strong {
-  margin-right: 10px;
 }
 .unread {
   margin-left: 10px;
@@ -351,4 +374,25 @@ section .form {
   justify-content: space-around;
   display: flex;
   flex-direction: column;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-7);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-4); 
 }

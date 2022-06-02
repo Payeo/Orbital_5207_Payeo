@@ -20,9 +20,9 @@ const Navbar = () => {
   return (
     <nav>
       <h3>
-        <Link to="/">Messenger</Link>
+        <Link to="/">Payeo</Link>
       </h3>
-      <div>
+      <div className="logout_container">
         {user ? (
           <>
             <Link to="/profile">Profile</Link>
