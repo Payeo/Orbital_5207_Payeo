@@ -13,6 +13,7 @@ const User = ({ user1, user, selectUser, chat }) => {
       setData(doc.data());
     });
     return () => unsub();
+    // eslint-disable-next-line
   }, []);
 
   return (
