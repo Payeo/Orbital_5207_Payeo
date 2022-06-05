@@ -25,10 +25,10 @@ const Navbar = (props) => {
     <h3>
       <Link to="/">Payeo</Link>
     </h3>
-    <div>
-      <Switch onChange={props.toggleTheme} checked={props.theme === "dark"} />
-    </div>
     <div className="logout_container">
+      <div>
+        <Switch onChange={props.toggleTheme} checked={props.theme === "light"} />
+      </div>
       {user ? (
         <>
           <Link to="/profile">Profile</Link>
