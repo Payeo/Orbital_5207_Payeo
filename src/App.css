@@ -4,8 +4,8 @@
 
 #light {
   background-color: white;
-  color:  #242526;
-  --color-3: #0084ff;
+  color:  #696969;
+  --color-3: #2693e6;
   --color-5: #eb4034;
   --color-4: #494949;
   --color-6: #aaaaaa;
@@ -14,7 +14,7 @@
 #dark {
   background-color:  #242526;
   color:  white;
-  --color-3: #0084ff;
+  --color-3: #2693e6;
   --color-5: #eb4034;
   --color-4: #aaaaaa;
   --color-6: #333;
@@ -71,7 +71,6 @@ section h3 {
 }
 .logout_container div {
   margin-right:7px;
-  margin-top: 1px;
 }
 /* Register */
 section .form {
@@ -352,7 +351,7 @@ section .form {
 /* Popup style */
 .popup_box {
   position: fixed;
-  background: #00000050;
+  background: var(--color-7);
   width: 100%;
   height: 100vh;
   top: 0;
