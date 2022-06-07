@@ -114,15 +114,17 @@ const Home = () => {
   return (
     <div className="home_container">
       <div className="users_container">
-        {users.map((user) => (
-          <User
-            key={user.uid}
-            user={user}
-            selectUser={selectUser}
-            user1={user1}
-            chat={chat}
-          />
-        ))}
+        <div className="users">
+          {users.map((user) => (
+            <User
+              key={user.uid}
+              user={user}
+              selectUser={selectUser}
+              user1={user1}
+              chat={chat}
+            />
+          ))}
+        </div>
       </div>
       <div className="messages_container">
         {chat ? (
