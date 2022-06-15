@@ -45,6 +45,7 @@ const Login = () => {
   };
 
   const handleGoogle = async (provider) => {
+    setData({ ...data, error: null, loading: true });
     signInWithPopup(auth, provider)
       .then(async (res) => {
         console.log(res.user);
@@ -96,7 +97,11 @@ const Login = () => {
           </button>
         </div>
       </form>
-      <button className="btn" onClick={() => handleGoogle(new GoogleAuthProvider())}></button>
+      <div className="login_div">
+        <button className="btn" onClick={() => handleGoogle(new GoogleAuthProvider())}>
+          {loading ? "Logging in ..." : "Sign In with Google"}
+        </button>
+      </div>
     </section>
   );
 };

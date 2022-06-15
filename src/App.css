@@ -64,6 +64,9 @@ section h3 {
   font-size: 20px;
   color: var(--color-4);
 }
+.login_div {
+  margin-left: 4%;
+}
 .logout_container{
   display: flex;
   flex-direction: row;
