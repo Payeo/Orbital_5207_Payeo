@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, db } from "../firebase";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, Timestamp, setDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -47,11 +47,16 @@ const Login = () => {
   const handleGoogle = async (provider) => {
     signInWithPopup(auth, provider)
       .then(async (res) => {
-        await updateDoc(doc(db, "users", res.user.uid), {
+        console.log(res.user);
+        await setDoc(doc(db, "users", res.user.uid), {
+          uid: res.user.uid,
+          name: res.user.displayName,
+          email: res.user.email,
+          createdAt: Timestamp.fromDate(new Date()),
           isOnline: true,
         });
         setData({
-          email: "",
+          email: res.user.email,
           password: "",
           error: null,
           loading: false,
