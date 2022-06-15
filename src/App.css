@@ -4,7 +4,8 @@
 
 #light {
   background-color: white;
-  color:  #696969;
+  color: black;
+  --color-2:  #080808;
   --color-3: #2693e6;
   --color-5: #eb4034;
   --color-4: #494949;
@@ -13,7 +14,8 @@
 }
 #dark {
   background-color:  #242526;
-  color:  white;
+  color: white;
+  --color-2:  white;
   --color-3: #2693e6;
   --color-5: #eb4034;
   --color-4: #aaaaaa;
@@ -241,6 +243,7 @@ section .form {
   border-radius: 25px;
   outline: none;
   border: none;
+  color: var(--color-2);
   background-color: var(--color-6);
 }
 .messages {
