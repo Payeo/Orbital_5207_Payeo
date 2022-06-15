@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
@@ -43,6 +43,25 @@ const Login = () => {
       setData({ ...data, error: err.message, loading: false });
     }
   };
+
+  const handleGoogle = async (provider) => {
+    signInWithPopup(auth, provider)
+      .then(async (res) => {
+        await updateDoc(doc(db, "users", res.user.uid), {
+          isOnline: true,
+        });
+        setData({
+          email: "",
+          password: "",
+          error: null,
+          loading: false,
+        })
+      history.replace("/");
+      }
+    ).catch((err) => {
+      setData({ ...data, error: err.message, loading: false });
+    })
+  };
   return (
     <section>
       <h3>Log into your Account</h3>
@@ -72,6 +91,7 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <button className="btn" onClick={() => handleGoogle(new GoogleAuthProvider())}></button>
     </section>
   );
 };
