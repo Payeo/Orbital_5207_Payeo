@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Profile from './pages/Profile'
+import Profile from './pages/Profile';
+import Chat from './pages/Chat';
 import AuthProvider from "./context/auth";
 import PrivateRoute from "./components/PrivateRoute";
 import { useState } from "react";
@@ -30,6 +31,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/" component={Home} />
+              <Route exact path="/:chatId" component={Chat} />
             </Switch>
           </BrowserRouter>
         </AuthProvider>
