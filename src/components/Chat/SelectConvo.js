@@ -14,12 +14,11 @@ const SelectConversation = ({
   
   const filtered = users?.filter((user) => user.id !== currentUser?.uid);
 
-  const { id } = useParams();
+  const { convoId } = useParams();
 
   const {
     data: lastMessage,
     loading: lastMessageLoading,
-    error: lastMessageError,
   } = useLastMessage(conversationId);
 
   if (loading)
@@ -34,11 +33,10 @@ const SelectConversation = ({
     );
 
 if (conversation.users.length === 2) {
-
     return (
       <Link
         to={`/${conversationId}`}
-        className={`user_wrapper ${ conversationId === id ? "selected_user" : "" }`}
+        className={`user_wrapper ${ conversationId === convoId ? "selected_user" : "" }`}
       >
         <div className="user_info">
           <img
@@ -77,11 +75,11 @@ if (conversation.users.length === 2) {
   return (
     <Link
       to={`/${conversationId}`}
-      className={`user_wrapper ${ conversationId === id ? "selected_user" : "" }`}
+      className={`user_wrapper ${ conversationId === convoId ? "selected_user" : "" }`}
     >
       {conversation?.group?.groupImage ? (
         <img
-          className="h-14 w-14 flex-shrink-0 rounded-full object-cover"
+          className="user_info"
           src={conversation.group.groupImage}
           alt=""
         />
@@ -93,7 +91,7 @@ if (conversation.users.length === 2) {
             alt=""
           />
           <img
-            className={`user_wrapper ${ conversationId === id ? "selected_user" : "" }`}
+            className={`user_wrapper ${ conversationId === convoId ? "selected_user" : "" }`}
             src={Img}
             alt=""
           />

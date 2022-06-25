@@ -4,6 +4,7 @@ import {
     onSnapshot,
     orderBy,
     query,
+    snapshotEqual,
   } from "firebase/firestore";
   import { useEffect, useState } from "react";
   import dayjs from "dayjs";
@@ -36,7 +37,7 @@ import {
       const unsubscribe = onSnapshot(
         query(
           collection(db, "conversations", conversationId, "messages"),
-          orderBy("createdAt"),
+          orderBy("createdAt", "desc"),
           limitToLast(1)
         ),
         (snapshot) => {
@@ -53,23 +54,19 @@ import {
           let response =
             type === "image"
               ? "An image"
-              : type === "file"
-              ? `File: ${
-                  snapshot.docs[0]?.data()?.file?.name.split(".").slice(-1)[0]
-                }`
-              : type === "sticker"
-              ? "A sticker"
-              : type === "removed"
-              ? "Message removed"
               : (snapshot.docs[0].data().content);
   
           const seconds = snapshot.docs[0]?.data()?.createdAt?.seconds;
           const formattedDate = formatDate(seconds ? seconds * 1000 : Date.now());
-  
-          response =
-            response.length > 30 - formattedDate.length
+          
+          if (response == undefined) {
+            setData({lastMessageId: null, message: "No message recently",});
+          } else {
+            response =
+            response?.length > 30 - formattedDate.length
               ? `${response.slice(0, 30 - formattedDate.length)}...`
               : response;
+          }
   
           const result = `${response} • ${formattedDate}`;
           setData({

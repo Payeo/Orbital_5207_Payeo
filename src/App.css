@@ -216,15 +216,40 @@ section .form {
 .text_container h3 {
   text-align: left;
 }
-
 .home_container {
   display: flex;
-  height: auto;
+  height: 100vh;
   width: auto;
 }
+.floating_btn_container{
+  position: fixed;
+  bottom: 35px;
+  left: 310px;
+  cursor: pointer;
+}
+.iconbutton{
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: #000000;
+  box-shadow: 2px 2px 7px var(--color-4);
+}
+.button {
+  width:40px;
+  height:40px;
+  background:#178d7d;
+}
+.iconbutton i {
+  display:flex;
+  font-size: 23px;
+  align-items:center;
+  justify-content:center;
+  height: 90%;
+  color:white;
+} 
 .users {
   overflow-y: auto;
-  max-height: 100vh;
+  height: 100%;
 }
 .users_container {
   min-width: 390px;
@@ -232,14 +257,13 @@ section .form {
   height: auto;
 }
 .user_wrapper {
-  margin-bottom: 10px;
   padding: 10px;
   cursor: pointer;
 }
 .user_info {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  padding-left: 3%;
   align-items: center;
 }
 .user_detail {
@@ -251,6 +275,8 @@ section .form {
   margin-left: 10px;
   margin-top: 10px;
   max-width: 200px;
+  text-decoration: none; 
+  color: var(--color-2);
 }
 .avatar {
   width: 50px;
@@ -282,9 +308,12 @@ section .form {
   border-bottom: 2px solid var(--color-6);
 }
 .no_conv {
+  vertical-align: middle;
   font-size: 20px;
   color: var(--color-4);
   text-align: center;
+  height: 100%;
+  font-weight: bold;
 }
 .message_form_div {
   display: flex;

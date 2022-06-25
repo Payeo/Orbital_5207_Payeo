@@ -47,7 +47,7 @@ const CreateConversation = ({ setIsOpened }) => {
         group:
           sorted.length > 2
             ? {
-                admins: [currentUser?.uid],
+                admins: [currentUser],
                 groupName: null,
                 groupImage: null,
               }
@@ -60,11 +60,11 @@ const CreateConversation = ({ setIsOpened }) => {
 
       setIsOpened(false);
 
-      navigate(`/${created.id}`);
+      navigate.push(`/${created.id}`);
     } else {
       setIsOpened(false);
 
-      navigate(`/${querySnapshot.docs[0].id}`);
+      navigate.push(`/${querySnapshot.docs[0].id}`);
 
       setIsCreating(false);
     }
