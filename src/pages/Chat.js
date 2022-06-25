@@ -27,20 +27,19 @@ const Chat = () => {
   const [img, setImg] = useState("");
   const [msgs, setMsgs] = useState([]);
   const [otherUser, setOtherUser] = useState("");
-  const { chatId } = useParams();
-
-  // const { data, error, loading } = useCollectionQuery(
-  //   "conversations",
-  //   query(
-  //     collection(db, "conversations"),
-  //     orderBy("createdAt", "desc"),
-  //     where("users", "array-contains", currentUser?.uid)
-  //   )
-  // );
-  
+  const { chatId } = useParams();  
 
   const currentUser = auth.currentUser.uid;
   let user2;
+  
+  const { data, error, loading } = useCollectionQuery(
+    "conversations",
+    query(
+      collection(db, "conversations"),
+      orderBy("createdAt", "desc"),
+      //where("users", "array-contains", currentUser?.uid)
+    )
+  );
 
   useEffect(() => {
     const usersRef = collection(db, "users");

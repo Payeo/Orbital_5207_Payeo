@@ -43,13 +43,13 @@ if (conversation.users.length === 2) {
         <div className="user_info">
           <img
             className="avatar"
-            src={filtered?.[1]?.data()?.avatar || Img}
+            src={filtered?.[0]?.data()?.avatar || Img}
             alt=""
           />
           <div classname="user_detail">
             <div className="user_detail_div">
               <p>
-                {filtered?.[1].data()?.name}
+                {filtered?.[0].data()?.name}
               </p>
               {lastMessageLoading ? (
                 <Skeleton />

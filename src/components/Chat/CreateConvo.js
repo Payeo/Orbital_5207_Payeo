@@ -91,7 +91,7 @@ const CreateConversation = ({ setIsOpened }) => {
               onClick={() => setIsOpened(false)}
               className="create_convo_close_btn"
             >
-              <i className="bx bx-x text-2xl"></i>
+              <i className=""></i>
             </button>
           </div>
         </div>
