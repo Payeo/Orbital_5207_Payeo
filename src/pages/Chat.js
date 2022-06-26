@@ -1,15 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { db, auth, storage } from "../firebase";
 import {
   collection,
   query,
-  where,
   addDoc,
-  limitToLast,
   Timestamp,
   orderBy,
-  setDoc,
-  doc,
   onSnapshot,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
@@ -17,26 +13,14 @@ import MessageForm from "../components/MessageForm";
 import Message from "../components/Message";
 import { useParams } from "react-router-dom";
 import SideBar from "../components/Chat/SideBar";
-import useCollectionQuery from "../hooks/useCollectionQuery";
 
 const Chat = () => {
-  const [chat, setChat] = useState("");
   const [text, setText] = useState("");
   const [img, setImg] = useState("");
   const [msgs, setMsgs] = useState([]);
-  const [otherUser, setOtherUser] = useState("");
-  const [limitCount, setLimitCount] = useState(10);
   const { convoId } = useParams();  
 
-  const currentUser = auth.currentUser.uid;
-
-  const { data, loading, error } = useCollectionQuery(
-    `conversations-${convoId}`,
-    query(
-      doc(db, "conversations", convoId),
-    )
-  );
-  
+  const currentUser = auth.currentUser.uid;  
 
   useEffect(() => {
   const msgsRef = collection(db, "conversations", convoId, "messages");
@@ -49,7 +33,7 @@ const Chat = () => {
       });
       setMsgs(msgs);
     });
-  });
+  }, [convoId]);
   
 
   const handleSubmit = async (e) => {
@@ -99,7 +83,6 @@ const Chat = () => {
                 setText={setText}
                 setImg={setImg}
                 currentUser={currentUser}
-                user2={otherUser}
             />
           </div>
         </div>

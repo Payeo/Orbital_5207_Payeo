@@ -14,7 +14,7 @@ const Sidebar = () => {
   const [createConversationOpened, setCreateConversationOpened] = useState(false);
   const currentUser = auth.currentUser.uid;
   
-  const { data, error, loading } = useCollectionQuery(
+  const { data } = useCollectionQuery(
     "conversations",
     query(
       collection(db, "conversations"),
