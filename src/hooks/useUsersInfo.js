@@ -31,6 +31,7 @@ import { doc, getDoc } from "firebase/firestore";
         setLoading(false);
         setError(true);
       }
+      //eslint-disable-next-line
     }, [JSON.stringify(userIds)]);
   
     return { data, loading, error };

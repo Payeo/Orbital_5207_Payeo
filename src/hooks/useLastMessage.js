@@ -4,7 +4,6 @@ import {
     onSnapshot,
     orderBy,
     query,
-    snapshotEqual,
   } from "firebase/firestore";
   import { useEffect, useState } from "react";
   import dayjs from "dayjs";
@@ -50,7 +49,6 @@ import {
             setError(false);
             return;
           }
-          const type = snapshot.docs?.[0]?.data()?.type;
           let response = (snapshot.docs[0].data().text);
   
           const seconds = snapshot.docs[0]?.data()?.createdAt?.seconds;
