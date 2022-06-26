@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth, db } from "../firebase";
-import { updateDoc, doc } from "firebase/firestore";
+import { updateDoc, doc, Timestamp, setDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -43,6 +43,31 @@ const Login = () => {
       setData({ ...data, error: err.message, loading: false });
     }
   };
+
+  const handleGoogle = async (provider) => {
+    setData({ ...data, error: null, loading: true });
+    signInWithPopup(auth, provider)
+      .then(async (res) => {
+        console.log(res.user);
+        await setDoc(doc(db, "users", res.user.uid), {
+          uid: res.user.uid,
+          name: res.user.displayName,
+          email: res.user.email,
+          createdAt: Timestamp.fromDate(new Date()),
+          isOnline: true,
+        });
+        setData({
+          email: res.user.email,
+          password: "",
+          error: null,
+          loading: false,
+        })
+      history.replace("/");
+      }
+    ).catch((err) => {
+      setData({ ...data, error: err.message, loading: false });
+    })
+  };
   return (
     <section>
       <h3>Log into your Account</h3>
@@ -72,6 +97,11 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <div className="login_div">
+        <button className="btn" onClick={() => handleGoogle(new GoogleAuthProvider())}>
+          {loading ? "Logging in ..." : "Sign In with Google"}
+        </button>
+      </div>
     </section>
   );
 };
