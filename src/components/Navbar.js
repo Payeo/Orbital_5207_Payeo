@@ -6,7 +6,6 @@ import { updateDoc, doc } from "firebase/firestore";
 import { AuthContext } from "../context/auth";
 import { useHistory } from "react-router-dom";
 import Switch from "react-switch";
-import CreateConversation from "./Chat/CreateConvo";
 
 export const ThemeContext = createContext(null);
 
