@@ -133,7 +133,7 @@ section .form {
 }
 .stop_propagation {
   overflow: hidden; 
-  width: 60%; 
+  width: 30%;
   border-radius: 0.5rem; 
   background-color: var(--color-8);
 }
@@ -167,13 +167,13 @@ section .form {
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  width: 2rem; 
-  height: 2rem; 
+  width: 30px; 
+  height: 30px; 
   border-radius: 9999px; 
+  margin-right: 10px;
 }
 .create_convo_close_btn i {
-  font-size: 1.5rem;
-  line-height: 2rem; 
+  font-size: larger;
 }
 .create_convo_loading {
   display: flex; 
@@ -198,8 +198,36 @@ section .form {
   padding: 20px;
   flex-direction: column; 
   align-items: stretch; 
-  height: 250px; 
+  height: 300px; 
   gap: 20px; 
+}
+.create_convo_user {
+  display: flex; 
+  align-items: center; 
+  cursor: pointer; 
+  gap: 5px; 
+}
+.create_convo_avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+.start_convo_button_div {
+  display: flex; 
+  padding: 12px; 
+  justify-content: flex-end; 
+  border-top-width: 1px; 
+  border-top: 2px solid var(--color-6);
+}
+.start_convo_button {
+  padding-top: 5px;
+  padding-bottom: 5px; 
+  padding-left: 10px;
+  padding-right: 10px; 
+  border-radius: 20px; 
+}
+.start_convo_button:hover {
+ filter: brightness(1.25); 
 }
 /* Profile */
 .profile_container {
@@ -308,12 +336,13 @@ section .form {
   height: 50px;
   border-radius: 50%;
 }
+.group_avatar_div {
+  display: inline;
+  position: relative
+}
 .group_avatar { 
-  object-fit: cover;
-  flex-shrink: 0;
   left: 10px;
-  margin-top: 10px; 
-  position: fixed; 
+  position: absolute;
   width: 50px; 
   height: 50px; 
   border-radius: 50%; 
@@ -347,7 +376,11 @@ section .form {
   font-size: 20px;
   color: var(--color-4);
   text-align: center;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  flex-grow: 1;
   font-weight: bold;
 }
 .message_form_div {

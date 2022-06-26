@@ -50,7 +50,7 @@ if (conversation.users.length === 2) {
                 {filtered?.[0].data()?.name}
               </p>
               {lastMessageLoading ? (
-                <Skeleton />
+                <Skeleton>Loading...</Skeleton>
               ) : (
                 <p className="truncate">
                   {lastMessage?.message}
@@ -84,16 +84,18 @@ if (conversation.users.length === 2) {
         />
       ) : (
         <div className="user_info">
-          <img
-            className="avatar"
-            src={Img}
-            alt=""
-          />
-          <img
-            className={`group_avatar ${ conversationId === convoId && "selected_user"}`}
-            src={Img}
-            alt=""
-          />
+          <div>
+            <img
+              className="avatar"
+              src={Img}
+              alt=""
+            />
+            <img
+              className={`group_avatar ${ conversationId === convoId && "selected_user"}`}
+              src={Img}
+              alt=""
+            />
+          </div>
           <div className="user_detail_div">
             <p className="user_detail">
               {conversation?.group?.groupName ||
@@ -103,7 +105,7 @@ if (conversation.users.length === 2) {
                 .join(", ")}
             </p>
             {lastMessageLoading ? (
-              <Skeleton />
+              <Skeleton>Loading...</Skeleton>
             ) : (
               <p className="truncate">
                 {lastMessage?.message}

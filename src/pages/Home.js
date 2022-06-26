@@ -6,7 +6,7 @@ const Home = () => {
     <div className="home_container">
       <SideBar></SideBar>
       <div className="messages_container">
-        <p className="no_conv">Select a user to start conversation</p>
+        <div className="no_conv">Select a user to start conversation</div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import {
   serverTimestamp,
   where,
 } from "firebase/firestore";
-
+import Img from "../../image1.jpg";
 import { auth, db } from "../../firebase";
 import { useCollectionQuery } from "../../hooks/useCollectionQuery";
 import { useHistory } from "react-router-dom";
@@ -18,6 +18,7 @@ const CreateConversation = ({ setIsOpened }) => {
     "all-users",
     collection(db, "users")
   );
+
   const [isCreating, setIsCreating] = useState(false);
   const [selected, setSelected] = useState([]);
   const navigate = useHistory();
@@ -69,7 +70,6 @@ const CreateConversation = ({ setIsOpened }) => {
       setIsCreating(false);
     }
   };
-
   return (
     <div
       onClick={() => setIsOpened(false)}
@@ -117,28 +117,27 @@ const CreateConversation = ({ setIsOpened }) => {
                   <div
                     key={doc.data().uid}
                     onClick={() => handleToggle(doc.data().uid)}
-                    className="hover:bg-dark-lighten flex cursor-pointer items-center gap-2 px-5 py-2 transition"
+                    className="create_convo_user"
                   >
                     <input
-                      className="flex-shrink-0 cursor-pointer"
                       type="checkbox"
                       checked={selected.includes(doc.data().uid)}
                       readOnly
                     />
                     <img
-                      className="h-8 w-8 flex-shrink-0 rounded-full object-cover"
-                      src={currentUser.avatar}
+                      className="create_convo_avatar"
+                      src={doc.data().avatar || Img}
                       alt=""
                     />
-                    <p>{doc.data().displayName}</p>
+                    <p>{doc.data().name}</p>
                   </div>
                 ))}
             </div>
-            <div className="border-dark-lighten flex justify-end border-t p-3">
+            <div className="start_convo_button_div">
               <button
                 disabled={selected.length === 0}
                 onClick={handleCreateConversation}
-                className="bg-dark-lighten rounded-lg py-2 px-3 transition duration-300 hover:brightness-125 disabled:!brightness-[80%]"
+                className="start_convo_button"
               >
                 Start conversation
               </button>
