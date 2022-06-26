@@ -11,6 +11,7 @@
   --color-4: #494949;
   --color-6: #aaaaaa;
   --color-7: #d3d3d3;
+  --color-8: white;
 }
 #dark {
   background-color:  #242526;
@@ -21,6 +22,7 @@
   --color-4: #aaaaaa;
   --color-6: #333;
   --color-7: #3d3d3d;
+  --color-8: #242526; 
 }
 
 .switch {
@@ -31,8 +33,8 @@
 /* App container */
 .app_container {
   overflow-y: hidden;
-  height: 100vh;
   width: auto;
+  height: 100vh;
 }
 
 /* Navbar */
@@ -131,20 +133,14 @@ section .form {
 }
 .stop_propagation {
   overflow: hidden; 
-  margin-left: 0.75rem;
-  margin-right: 0.75rem; 
-  width: 100%; 
+  width: 60%; 
   border-radius: 0.5rem; 
+  background-color: var(--color-8);
 }
 .create_convo_div {
   display: flex; 
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem; 
-  padding-left: 0.75rem;
-  padding-right: 0.75rem; 
   justify-content: space-between; 
   align-items: center; 
-  border-bottom-width: 1px; 
 }
 .create_convo_div_inner {
   flex: 1 1 0%; 
@@ -178,6 +174,32 @@ section .form {
 .create_convo_close_btn i {
   font-size: 1.5rem;
   line-height: 2rem; 
+}
+.create_convo_loading {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 24rem; 
+}
+.creating_convo {
+  display: flex; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  z-index: 20; 
+  justify-content: center; 
+  align-items: center; 
+  width: 100%; 
+  height: 100%; 
+}
+.create_convo_users {
+  display: flex; 
+  overflow-y: auto; 
+  padding: 20px;
+  flex-direction: column; 
+  align-items: stretch; 
+  height: 250px; 
+  gap: 20px; 
 }
 /* Profile */
 .profile_container {
@@ -218,34 +240,34 @@ section .form {
 }
 .home_container {
   display: flex;
-  height: 100vh;
+  height: auto;
   width: auto;
 }
 .floating_btn_container{
   position: fixed;
-  bottom: 35px;
+  bottom: 30px;
   left: 310px;
   cursor: pointer;
 }
 .iconbutton{
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
   background: #000000;
   box-shadow: 2px 2px 7px var(--color-4);
 }
 .button {
-  width:40px;
-  height:40px;
-  background:#178d7d;
+  width: 50px;
+  height: 50px;
+  background: #178d7d;
 }
 .iconbutton i {
-  display:flex;
+  display: flex;
   font-size: 23px;
-  align-items:center;
-  justify-content:center;
-  height: 90%;
-  color:white;
+  align-items: center;
+  justify-content: center;
+  height:  90%;
+  color: white;
 } 
 .users {
   overflow-y: auto;
@@ -259,6 +281,7 @@ section .form {
 .user_wrapper {
   padding: 10px;
   cursor: pointer;
+  text-decoration: none;
 }
 .user_info {
   display: flex;
@@ -268,21 +291,33 @@ section .form {
 }
 .user_detail {
   display: flex;
-  width: auto;
+  width: 200px;
   align-items: center;
 }
 .user_detail_div {
   margin-left: 10px;
   margin-top: 10px;
   max-width: 200px;
-  text-decoration: none; 
   color: var(--color-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid var(--color-4);
+}
+.group_avatar { 
+  object-fit: cover;
+  flex-shrink: 0;
+  left: 10px;
+  margin-top: 10px; 
+  position: fixed; 
+  width: 50px; 
+  height: 50px; 
+  border-radius: 50%; 
+  border: 5px solid var(--color-6);
 }
 .user_status {
   width: 10px;
@@ -296,13 +331,13 @@ section .form {
   background: var(--color-5);
 }
 .messages_container {
+  height: 100%;
   display: flex;
   flex-grow: 1;
-  width: auto;
   flex-direction: column;
 }
 .messages_user {
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   text-align: center;
   border-bottom: 2px solid var(--color-6);
@@ -317,12 +352,13 @@ section .form {
 }
 .message_form_div {
   display: flex;
+  bottom: 0px;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  border-top: 2px solid var(--color-6);
 }
 .message_form {
-  bottom: 0;
   height: auto;
   display: flex;
   flex-basis: 50%;
@@ -330,19 +366,18 @@ section .form {
 }
 .message_form input {
   padding: 11px;
-  min-width: 100vh;
+  width: 800px;
   border-radius: 25px;
   outline: none;
   border: none;
   color: var(--color-2);
   background-color: var(--color-6);
 }
-.messages {
+.messages { 
   height: calc(100vh - 200px);
-  display: flex;
+  flex-grow: 1;
   flex-direction: column;
   overflow-y: auto;
-  border-bottom: 1px solid var(--color-6);
 }
 .message_wrapper {
   margin-bottom: 5px;

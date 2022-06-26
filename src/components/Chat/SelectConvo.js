@@ -36,7 +36,7 @@ if (conversation.users.length === 2) {
     return (
       <Link
         to={`/${conversationId}`}
-        className={`user_wrapper ${ conversationId === convoId ? "selected_user" : "" }`}
+        className={`user_info ${ conversationId === convoId && "selected_user"}`}
       >
         <div className="user_info">
           <img
@@ -71,15 +71,14 @@ if (conversation.users.length === 2) {
       </Link>
     );
   }
-
   return (
     <Link
       to={`/${conversationId}`}
-      className={`user_wrapper ${ conversationId === convoId ? "selected_user" : "" }`}
+      className={`user_info ${ conversationId === convoId && "selected_user"}`}
     >
       {conversation?.group?.groupImage ? (
         <img
-          className="user_info"
+          className="avatar"
           src={conversation.group.groupImage}
           alt=""
         />
@@ -91,34 +90,34 @@ if (conversation.users.length === 2) {
             alt=""
           />
           <img
-            className={`user_wrapper ${ conversationId === convoId ? "selected_user" : "" }`}
+            className={`group_avatar ${ conversationId === convoId && "selected_user"}`}
             src={Img}
             alt=""
           />
+          <div className="user_detail_div">
+            <p className="user_detail">
+              {conversation?.group?.groupName ||
+                filtered
+                ?.map((user) => user.data()?.name)
+                .slice(0, 3)
+                .join(", ")}
+            </p>
+            {lastMessageLoading ? (
+              <Skeleton />
+            ) : (
+              <p className="truncate">
+                {lastMessage?.message}
+              </p>
+            )}
+          </div>
         </div>
       )}
-      <div className="flex flex-grow flex-col items-start gap-1 py-1">
-        <p className="max-w-[240px] overflow-hidden text-ellipsis whitespace-nowrap">
-          {conversation?.group?.groupName ||
-            filtered
-              ?.map((user) => user.data()?.displayName)
-              .slice(0, 3)
-              .join(", ")}
-        </p>
-        {lastMessageLoading ? (
-          <Skeleton className="w-2/3 flex-grow" />
-        ) : (
-          <p className="max-w-[240px] flex-grow overflow-hidden text-ellipsis whitespace-nowrap text-sm text-gray-400">
-            {lastMessage?.message}
-          </p>
-        )}
-      </div>
       {!lastMessageLoading && (
         <>
           {lastMessage?.lastMessageId !== null &&
             lastMessage?.lastMessageId !==
               conversation.seen[currentUser?.uid] && (
-              <div className="bg-primary absolute top-1/2 right-4 h-[10px] w-[10px] -translate-y-1/2 rounded-full"></div>
+              <div></div>
             )}
         </>
       )}

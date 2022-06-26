@@ -91,26 +91,26 @@ const CreateConversation = ({ setIsOpened }) => {
               onClick={() => setIsOpened(false)}
               className="create_convo_close_btn"
             >
-              <i className=""></i>
+              <p className="">x</p>
             </button>
           </div>
         </div>
         {loading ? (
-          <div className="flex h-96 items-center justify-center">
+          <div className="create_convo_loading">
             <p>Loading</p>
           </div>
         ) : error ? (
-          <div className="flex h-96 items-center justify-center">
+          <div className="create_convo_loading">
             <p className="text-center">Something went wrong</p>
           </div>
         ) : (
           <>
             {isCreating && (
-              <div className="absolute top-0 left-0 z-20 flex h-full w-full items-center justify-center bg-[#00000080]">
+              <div className="creating_convo">
                 <p>Loading</p>
               </div>
             )}
-            <div className="flex h-96 flex-col items-stretch gap-2 overflow-y-auto py-2">
+            <div className="create_convo_users">
               {data?.docs
                 .filter((doc) => doc.data().uid !== currentUser?.uid)
                 .map((doc) => (

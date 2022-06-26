@@ -42,13 +42,13 @@ const Chat = () => {
   const msgsRef = collection(db, "conversations", convoId, "messages");
   const q = query(msgsRef, orderBy("createdAt", "asc"));
 
-  onSnapshot(q, (querySnapshot) => {
-    let msgs = [];
-    querySnapshot.forEach((doc) => {
-      msgs.push(doc.data());
+    onSnapshot(q, (querySnapshot) => {
+      let msgs = [];
+      querySnapshot.forEach((doc) => {
+        msgs.push(doc.data());
+      });
+      setMsgs(msgs);
     });
-    setMsgs(msgs);
-  });
   });
   
 

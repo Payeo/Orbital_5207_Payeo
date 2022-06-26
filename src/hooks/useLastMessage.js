@@ -37,7 +37,7 @@ import {
       const unsubscribe = onSnapshot(
         query(
           collection(db, "conversations", conversationId, "messages"),
-          orderBy("createdAt", "desc"),
+          orderBy("createdAt"),
           limitToLast(1)
         ),
         (snapshot) => {
@@ -51,15 +51,12 @@ import {
             return;
           }
           const type = snapshot.docs?.[0]?.data()?.type;
-          let response =
-            type === "image"
-              ? "An image"
-              : (snapshot.docs[0].data().content);
+          let response = (snapshot.docs[0].data().text);
   
           const seconds = snapshot.docs[0]?.data()?.createdAt?.seconds;
           const formattedDate = formatDate(seconds ? seconds * 1000 : Date.now());
           
-          if (response == undefined) {
+          if (response === undefined) {
             setData({lastMessageId: null, message: "No message recently",});
           } else {
             response =
