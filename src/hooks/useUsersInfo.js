@@ -6,7 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
   let cache = {};
   
   export const useUsersInfo = (userIds) => {
-    const [data, setData] = useState(userIds.every((id) => cache[id]) ? userIds.map((id) => cache[id]) : null);
+    const [data, setData] = useState(userIds?.every((id) => cache[id]) ? userIds?.map((id) => cache[id]) : null);
     const [loading, setLoading] = useState(!data);
     const [error, setError] = useState(false);
   
@@ -14,7 +14,7 @@ import { doc, getDoc } from "firebase/firestore";
       try {
         (async () => {
           const response = await Promise.all(
-            userIds.map(async (id) => {
+            userIds?.map(async (id) => {
               if (cache[id]) return cache[id];
               const res = await getDoc(doc(db, "users", id));
               cache[id] = res;

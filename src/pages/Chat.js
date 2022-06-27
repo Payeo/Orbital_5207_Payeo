@@ -7,12 +7,15 @@ import {
   Timestamp,
   orderBy,
   onSnapshot,
+  doc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import MessageForm from "../components/MessageForm";
 import Message from "../components/Message";
 import { useParams } from "react-router-dom";
 import SideBar from "../components/Chat/SideBar";
+import { useUsersInfo } from "../hooks/useUsersInfo";
+import { useDocumentQuery } from "../hooks/useDocumentQuery";
 
 const Chat = () => {
   const [text, setText] = useState("");
@@ -20,7 +23,15 @@ const Chat = () => {
   const [msgs, setMsgs] = useState([]);
   const { convoId } = useParams();  
 
+  const { data } = useDocumentQuery(
+    `conversation-${convoId}`,
+    doc(db, "conversations", convoId)
+  );
+
+  const conversation = data?.data();
   const currentUser = auth.currentUser.uid;  
+  const { data: users } = useUsersInfo(conversation?.users);
+  const filtered = users?.filter((user) => user.id !== currentUser);
 
   useEffect(() => {
   const msgsRef = collection(db, "conversations", convoId, "messages");
@@ -68,7 +79,14 @@ const Chat = () => {
           <SideBar></SideBar>
           <div className="messages_container">
             <div className="messages_user">
-                <h3>{"sdsd"}</h3>
+              <p>
+                {users?.length > 2 && conversation?.group?.groupName
+                  ? conversation.group.groupName
+                  : filtered
+                      ?.map((user) => user?.data().name)
+                      .slice(0, 3)
+                      .join(", ")}
+              </p>
             </div>
             <div className="messages">
                 {msgs.length
