@@ -307,6 +307,7 @@ section .form {
   height: 100%;
 }
 .users_container {
+  overflow-y: auto;
   min-width: 390px;
   border-right: 2px solid var(--color-6);
   height: auto;
@@ -425,6 +426,7 @@ section .form {
   align-items: center;
   justify-content: space-evenly;
   border-top: 2px solid var(--color-6);
+  padding-right: 10px;
 }
 .message_form {
   height: auto;
@@ -436,9 +438,8 @@ section .form {
 }
 .message_form_span {
   display:table-cell; 
-  flex-grow: 1;
   width: 100vw;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .message_form input {
   padding: 8px;
@@ -450,7 +451,7 @@ section .form {
   background-color: var(--color-6);
 }
 .messages { 
-  height: calc(100vh - 200px);
+  height: calc(100vh - 210px);
   flex-grow: 1;
   flex-direction: column;
   overflow-y: auto;
@@ -589,6 +590,14 @@ section .form {
   height: 100vh;
   top: 0;
   left: 0;
+}
+.popup_box input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  margin-top: 10px;
+  border: 1px solid var(--color-6);
+  border-radius: 5px;
 }
 .box {
   position: relative;
