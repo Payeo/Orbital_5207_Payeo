@@ -381,6 +381,25 @@ section .form {
   flex-grow: 1;
   flex-direction: column;
 }
+.messages_user_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+.messages_user_back {
+  font-size: 36px;
+  text-decoration: none;
+  display: hidden;
+  visibility: hidden;
+  color: var(--color-2);
+  padding: 8px 16px;
+}
+.messages_user_back:hover {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
 .messages_user {
   padding: 15px;
   width: 100%;
@@ -524,6 +543,14 @@ section .form {
   .no_conv {
     display: none;
     visibility: hidden;
+  }
+  .messages_user_back {
+    font-size: 36px;
+    text-decoration: none;
+    display: inline-block;
+    visibility: visible;
+    color: var(--color-2);
+    padding: 8px 16px;
   }
 }
 

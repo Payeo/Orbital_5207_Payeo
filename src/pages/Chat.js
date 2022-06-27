@@ -81,14 +81,17 @@ const Chat = () => {
           </div>
           <div className="messages_container">
             <div className="messages_user">
-              <p>
-                {users?.length > 2 && conversation?.group?.groupName
-                  ? conversation.group.groupName
-                  : filtered
-                      ?.map((user) => user?.data().name)
-                      .slice(0, 3)
-                      .join(", ")}
-              </p>
+              <div className="messages_user_header">
+                <a href="/" class="previous" className="messages_user_back">&laquo; </a>
+                  <p>
+                    {users?.length > 2 && conversation?.group?.groupName
+                      ? conversation.group.groupName
+                      : filtered
+                          ?.map((user) => user?.data().name)
+                          .slice(0, 3)
+                          .join(", ")}
+                  </p>
+              </div>
             </div>
             <div className="messages">
                 {msgs.length
