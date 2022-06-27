@@ -271,6 +271,11 @@ section .form {
   height: auto;
   width: auto;
 }
+.home_container_no_convo {
+  display: flex;
+  height: auto;
+  width: auto;
+}
 .floating_btn_container{
   position: fixed;
   bottom: 30px;
@@ -302,6 +307,11 @@ section .form {
   height: 100%;
 }
 .users_container {
+  min-width: 390px;
+  border-right: 2px solid var(--color-6);
+  height: auto;
+}
+.users_container_no_convo {
   min-width: 390px;
   border-right: 2px solid var(--color-6);
   height: auto;
@@ -360,6 +370,12 @@ section .form {
   background: var(--color-5);
 }
 .messages_container {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+.messages_container_no_convo {
   height: 100%;
   display: flex;
   flex-grow: 1;
@@ -471,8 +487,22 @@ section .form {
   display: none;
 }
 @media screen and (max-width: 767px) {
-  .home_container {
-    grid-template-columns: 2fr 3fr;
+  .home_container_no_convo {
+    height: 100%;
+    flex-direction: row;
+  }
+  .users_container_no_convo {
+    width: 100%;
+    flex-grow: 1;
+    border-right: 0px;
+  }
+  .users_container {
+    display: none;
+    visibility: hidden;
+  }
+  .floating_btn_container {
+    bottom: 5%;
+    left: 80%;
   }
   .message_form {
     left: 3%;
@@ -481,6 +511,10 @@ section .form {
   }
   .message_wrapper p {
     max-width: 75%;
+  }
+  .no_conv {
+    display: none;
+    visibility: hidden;
   }
 }
 

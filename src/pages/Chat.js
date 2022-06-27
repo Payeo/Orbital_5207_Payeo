@@ -76,7 +76,9 @@ const Chat = () => {
 
     return (
         <div className="home_container">
-          <SideBar></SideBar>
+          <div className="users_container">
+            <SideBar></SideBar>
+          </div>
           <div className="messages_container">
             <div className="messages_user">
               <p>
