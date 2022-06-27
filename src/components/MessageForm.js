@@ -23,11 +23,13 @@ const MessageForm = ({ handleSubmit, text, setText, setImg, user1, user2 }) => {
           accept="image/*"
           style={{ display: "none" }} />
         <div>
+          <span className="message_form_span"> 
           <input
             type="text"
             placeholder="Enter message"
             value={text}
             onChange={(e) => setText(e.target.value)} />
+            </span>
         </div>
         <div>
           <button className="btn">Send</button>

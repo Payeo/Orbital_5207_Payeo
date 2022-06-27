@@ -372,7 +372,7 @@ section .form {
 .messages_container {
   height: 100%;
   display: flex;
-  flex-grow: 1;
+  width: 100%;
   flex-direction: column;
 }
 .messages_container_no_convo {
@@ -409,16 +409,23 @@ section .form {
 }
 .message_form {
   height: auto;
+  width: 100%;
+  flex-grow: 1;
   display: flex;
   flex-basis: 50%;
   align-items: inherit;
 }
+.message_form_span {
+  display:table-cell; 
+  flex-grow: 1;
+  width: 100vw;
+  padding-right: 20px;
+}
 .message_form input {
   padding: 8px;
   font-size: 16px;
-  width: 800px;
+  width: 100%;
   border-radius: 25px;
-  outline: none;
   border: none;
   color: var(--color-2);
   background-color: var(--color-6);
@@ -522,7 +529,7 @@ section .form {
 
 @media screen and (max-width: 576px) {
   .home_container {
-    grid-template-columns: 1fr 5fr;
+    width: 100vw;
   }
   .user_wrapper {
     display: none;
@@ -536,7 +543,7 @@ section .form {
     display: inline-block;
   }
   .message_form input {
-    width: 50vw;
+    width: 100%;
     margin: 0px 10px;
   }
   .message_form .btn {
