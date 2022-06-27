@@ -38,8 +38,8 @@ const Sidebar = () => {
         ))}
       </div>
     </div>
-    <div class="floating_btn_container" onClick={() => setCreateConversationOpened(true)}>
-      <div class="button iconbutton"> <i>+</i> </div>
+    <div className="floating_btn_container" onClick={() => setCreateConversationOpened(true)}>
+      <div className="button iconbutton"> <i>+</i> </div>
     </div>
   </>
   )

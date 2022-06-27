@@ -44,7 +44,7 @@ if (conversation.users.length === 2) {
             src={filtered?.[0]?.data()?.avatar || Img}
             alt=""
           />
-          <div classname="user_detail">
+          <div className="user_detail">
             <div className="user_detail_div">
               <p>
                 {filtered?.[0].data()?.name}
