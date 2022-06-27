@@ -28,15 +28,13 @@ const Sidebar = () => {
     {createConversationOpened && (
         <CreateConversation setIsOpened={setCreateConversationOpened} />
     )}
-    <div className="users_container">
-      <div className="users">
-        {data?.docs?.map((item) => (
-          <SelectConversation
-            key={item.id}
-            conversation={item.data()}
-            conversationId={item.id} />
-        ))}
-      </div>
+    <div className="users">
+      {data?.docs?.map((item) => (
+        <SelectConversation
+          key={item.id}
+          conversation={item.data()}
+          conversationId={item.id} />
+      ))}
     </div>
     <div className="floating_btn_container" onClick={() => setCreateConversationOpened(true)}>
       <div className="button iconbutton"> <i>+</i> </div>

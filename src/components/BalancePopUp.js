@@ -1,30 +1,28 @@
 import React, { useState } from "react";
 
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import {
-  doc,
   Timestamp,
-  setDoc,
+  addDoc,
+  collection,
 } from "firebase/firestore";
+import { useParams } from "react-router-dom";
  
 const BalancePopup = props => {
-
-  
+  const { convoId } = useParams();  
   const [balance, setBalance] = useState("");
+  const currentUser = auth.currentUser.uid; 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const text = "$" + balance + " has been recorded";
 
-    const user1 = props.user1;
-    const user2 = props.user2;
-
-    const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
-
-    await setDoc(doc(db, "balance", id), {
-      balance,
-      from: user1,
-      to: user2,
+    await addDoc(collection(db, "conversations", convoId, "messages"), {
+      text,
+      from: currentUser,
       createdAt: Timestamp.fromDate(new Date()),
+      media: "",
     });
 
     setBalance("");

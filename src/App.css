@@ -271,6 +271,11 @@ section .form {
   height: auto;
   width: auto;
 }
+.home_container_no_convo {
+  display: flex;
+  height: auto;
+  width: auto;
+}
 .floating_btn_container{
   position: fixed;
   bottom: 30px;
@@ -302,6 +307,12 @@ section .form {
   height: 100%;
 }
 .users_container {
+  overflow-y: auto;
+  min-width: 390px;
+  border-right: 2px solid var(--color-6);
+  height: auto;
+}
+.users_container_no_convo {
   min-width: 390px;
   border-right: 2px solid var(--color-6);
   height: auto;
@@ -362,8 +373,33 @@ section .form {
 .messages_container {
   height: 100%;
   display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.messages_container_no_convo {
+  height: 100%;
+  display: flex;
   flex-grow: 1;
   flex-direction: column;
+}
+.messages_user_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+.messages_user_back {
+  font-size: 36px;
+  text-decoration: none;
+  display: hidden;
+  visibility: hidden;
+  color: var(--color-2);
+  padding: 8px 16px;
+}
+.messages_user_back:hover {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
 }
 .messages_user {
   padding: 15px;
@@ -390,24 +426,32 @@ section .form {
   align-items: center;
   justify-content: space-evenly;
   border-top: 2px solid var(--color-6);
+  padding-right: 10px;
 }
 .message_form {
   height: auto;
+  width: 100%;
+  flex-grow: 1;
   display: flex;
   flex-basis: 50%;
   align-items: inherit;
 }
+.message_form_span {
+  display:table-cell; 
+  width: 100vw;
+  padding-right: 10px;
+}
 .message_form input {
-  padding: 11px;
-  width: 800px;
+  padding: 8px;
+  font-size: 16px;
+  width: 100%;
   border-radius: 25px;
-  outline: none;
   border: none;
   color: var(--color-2);
   background-color: var(--color-6);
 }
 .messages { 
-  height: calc(100vh - 200px);
+  height: calc(100vh - 210px);
   flex-grow: 1;
   flex-direction: column;
   overflow-y: auto;
@@ -471,22 +515,49 @@ section .form {
   display: none;
 }
 @media screen and (max-width: 767px) {
-  .home_container {
-    grid-template-columns: 2fr 3fr;
+  .home_container_no_convo {
+    height: 100%;
+    flex-direction: row;
+  }
+  .users_container_no_convo {
+    width: 100%;
+    flex-grow: 1;
+    border-right: 0px;
+  }
+  .users_container {
+    display: none;
+    visibility: hidden;
+  }
+  .floating_btn_container {
+    bottom: 5%;
+    left: 80%;
   }
   .message_form {
     left: 3%;
     right: 0;
     bottom: 5px;
+    font-size: 16px;
   }
   .message_wrapper p {
     max-width: 75%;
+  }
+  .no_conv {
+    display: none;
+    visibility: hidden;
+  }
+  .messages_user_back {
+    font-size: 36px;
+    text-decoration: none;
+    display: inline-block;
+    visibility: visible;
+    color: var(--color-2);
+    padding: 8px 16px;
   }
 }
 
 @media screen and (max-width: 576px) {
   .home_container {
-    grid-template-columns: 1fr 5fr;
+    width: 100vw;
   }
   .user_wrapper {
     display: none;
@@ -500,7 +571,7 @@ section .form {
     display: inline-block;
   }
   .message_form input {
-    width: 50vw;
+    width: 100%;
     margin: 0px 10px;
   }
   .message_form .btn {
@@ -514,20 +585,28 @@ section .form {
 /* Popup style */
 .popup_box {
   position: fixed;
-  background: var(--color-7);
+  background: #00000080;;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
 }
+.popup_box input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  margin-top: 10px;
+  border: 1px solid var(--color-6);
+  border-radius: 5px;
+}
 .box {
   position: relative;
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
-  height: 30vh;
+  height: 40%;
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: var(--color-1);
+  background: var(--color-8);
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
@@ -537,8 +616,8 @@ section .form {
   content: 'x';
   cursor: pointer;
   position: fixed;
-  left: 73%;
-  top: 14%;
+  left: 75%;
+  top: 12.5%;
   background: var(--color-1);
   width: 25px;
   height: 25px;
