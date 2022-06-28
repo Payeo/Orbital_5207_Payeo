@@ -348,12 +348,11 @@ section .form {
   border-radius: 50%;
 }
 .group_avatar_div {
-  display: inline;
-  position: relative
+  padding-right: 10px;
 }
 .group_avatar { 
-  left: 10px;
-  position: absolute;
+  margin-left: -60px;
+  position: static;
   width: 50px; 
   height: 50px; 
   border-radius: 50%; 

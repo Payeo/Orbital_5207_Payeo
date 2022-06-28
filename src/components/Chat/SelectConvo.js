@@ -84,7 +84,7 @@ if (conversation.users.length === 2) {
         />
       ) : (
         <div className="user_info">
-          <div>
+          <div className="group_avatar_div">
             <img
               className="avatar"
               src={Img}
