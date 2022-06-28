@@ -15,17 +15,20 @@ const BalancePopup = props => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const text = "$" + balance + " has been recorded";
+    if (balance === "") {
+      alert("Please enter a valid amount.");
+    } else {
+      const text = "$" + balance + " has been recorded";
 
-    await addDoc(collection(db, "conversations", convoId, "messages"), {
-      text,
-      from: currentUser,
-      createdAt: Timestamp.fromDate(new Date()),
-      media: "",
-    });
+      await addDoc(collection(db, "conversations", convoId, "messages"), {
+        text,
+        from: currentUser,
+        createdAt: Timestamp.fromDate(new Date()),
+        media: "",
+      });
 
-    setBalance("");
+      setBalance("");
+    }
   };
 
   return (
