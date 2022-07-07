@@ -12,7 +12,7 @@ const SelectConversation = ({
   const { data: users, loading } = useUsersInfo(conversation.users);
   const currentUser = auth.currentUser.uid;
   
-  const filtered = users?.filter((user) => user.id !== currentUser?.uid);
+  const filtered = users?.filter((user) => user.id !== currentUser);
 
   const { convoId } = useParams();
 

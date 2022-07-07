@@ -13,7 +13,7 @@ import { doc, getDoc } from "firebase/firestore";
     useEffect(() => {
       try {
         (async () => {
-          const response = await Promise.all(
+          const response = await Promise?.all(
             userIds?.map(async (id) => {
               if (cache[id]) return cache[id];
               const res = await getDoc(doc(db, "users", id));
@@ -21,7 +21,6 @@ import { doc, getDoc } from "firebase/firestore";
               return res;
             })
           );
-  
           setData(response);
           setLoading(false);
           setError(false);
