@@ -81,15 +81,18 @@ section h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: 100%;
+  background-color: #d4418e;
+  background-image: linear-gradient(0, #d4418e 0%, #66237e 80%);
 }
 .login_pic {
   padding: 50px;
 }
 .login_buttons_div {
   display: flex;
+  flex-direction: column;
   align-items: space-around;
 }
 .login_border {
