@@ -1,108 +1,43 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth, db } from "../firebase";
-import { updateDoc, doc, Timestamp, setDoc } from "firebase/firestore";
-import { useHistory } from "react-router-dom";
+import LoginPopUp from "../components/Pop-ups/LoginPopup";
+import RegisterPopup from "../components/Pop-ups/RegisterPopup";
 
 const Login = () => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-    error: null,
-    loading: false,
-  });
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
-  const history = useHistory();
+  const toggleLoginPopup = () => {
+    setIsLoginOpen(!isLoginOpen);
+  }
 
-  const { email, password, error, loading } = data;
+  const toggleRegisterPopup = () => {
+    setIsRegisterOpen(!isRegisterOpen);
+  }
 
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setData({ ...data, error: null, loading: true });
-    if (!email || !password) {
-      setData({ ...data, error: "All fields are required" });
-    }
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-
-      await updateDoc(doc(db, "users", result.user.uid), {
-        isOnline: true,
-      });
-      setData({
-        email: "",
-        password: "",
-        error: null,
-        loading: false,
-      });
-      history.replace("/");
-    } catch (err) {
-      setData({ ...data, error: err.message, loading: false });
-    }
-  };
-
-  const handleGoogle = async (provider) => {
-    setData({ ...data, error: null, loading: true });
-    signInWithPopup(auth, provider)
-      .then(async (res) => {
-        console.log(res.user);
-        await setDoc(doc(db, "users", res.user.uid), {
-          uid: res.user.uid,
-          name: res.user.displayName,
-          email: res.user.email,
-          createdAt: Timestamp.fromDate(new Date()),
-          isOnline: true,
-        });
-        setData({
-          email: res.user.email,
-          password: "",
-          error: null,
-          loading: false,
-        })
-      history.replace("/");
-      }
-    ).catch((err) => {
-      setData({ ...data, error: err.message, loading: false });
-    })
-  };
   return (
-    <section>
-      <h3>Log into your Account</h3>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="input_container">
-          <label htmlFor="email">Email</label>
+    <div className="login_div">
+      <img src={require('../components/media/logo.png')} alt="" className="login_pic"></img>
+      <div className="login_buttons_div">
+        <input
+            className="btn"
+            type="button"
+            value="Login"
+            onClick={toggleLoginPopup}
+            />
           <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
+          className="btn"
+          type="button"
+          value="Register"
+          onClick={toggleRegisterPopup}
           />
-        </div>
-        <div className="input_container">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </div>
-        {error ? <p className="error">{error}</p> : null}
-        <div className="btn_container">
-          <button className="btn" disabled={loading}>
-            {loading ? "Logging in ..." : "Login"}
-          </button>
-        </div>
-      </form>
-      <div className="login_div">
-        <button className="btn" onClick={() => handleGoogle(new GoogleAuthProvider())}>
-          {loading ? "Logging in ..." : "Sign In with Google"}
-        </button>
+        {isLoginOpen && <LoginPopUp
+          handleClose={toggleLoginPopup}
+        />}
+        {isRegisterOpen && <RegisterPopup
+          handleClose={toggleRegisterPopup}
+        />}
       </div>
-    </section>
+    </div>
   );
 };
 

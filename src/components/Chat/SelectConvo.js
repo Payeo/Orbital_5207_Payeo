@@ -12,7 +12,7 @@ const SelectConversation = ({
   const { data: users, loading } = useUsersInfo(conversation.users);
   const currentUser = auth.currentUser.uid;
   
-  const filtered = users?.filter((user) => user.id !== currentUser?.uid);
+  const filtered = users?.filter((user) => user.id !== currentUser);
 
   const { convoId } = useParams();
 
@@ -84,7 +84,7 @@ if (conversation.users.length === 2) {
         />
       ) : (
         <div className="user_info">
-          <div>
+          <div className="group_avatar_div">
             <img
               className="avatar"
               src={Img}

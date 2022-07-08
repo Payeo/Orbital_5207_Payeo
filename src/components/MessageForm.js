@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Attachment from "./svg/Attachment";
-import BalancePopup from "./BalancePopUp";
+import BalancePopup from "./Pop-ups/BalancePopUp";
 
 const MessageForm = ({ handleSubmit, text, setText, setImg, user1, user2 }) => {
 

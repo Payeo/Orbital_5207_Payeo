@@ -19,6 +19,8 @@ const CreateConversation = ({ setIsOpened }) => {
     collection(db, "users")
   );
 
+  const otherUsers = data?.docs.filter((doc) => doc.data().uid !== currentUser)
+
   const [isCreating, setIsCreating] = useState(false);
   const [selected, setSelected] = useState([]);
   const navigate = useHistory();
@@ -111,8 +113,7 @@ const CreateConversation = ({ setIsOpened }) => {
               </div>
             )}
             <div className="create_convo_users">
-              {data?.docs
-                .filter((doc) => doc.data().uid !== currentUser?.uid)
+              {otherUsers
                 .map((doc) => (
                   <div
                     key={doc.data().uid}

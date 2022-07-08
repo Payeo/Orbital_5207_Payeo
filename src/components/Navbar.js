@@ -23,11 +23,15 @@ const Navbar = (props) => {
   return (
   <nav>
     <h3>
-      <Link to="/">Payeo</Link>
+      <Link to="/" className="logo_title">
+        <img src={require('./media/logo.png')} alt="" className="logo"></img>
+        Payeo
+      </Link>
     </h3>
     <div className="logout_container">
       <div>
         <Switch 
+          className="switch"
           onChange={props.toggleTheme} 
           checked={props.theme === "light"}
           onColor="#86d3ff"
@@ -50,8 +54,6 @@ const Navbar = (props) => {
         </>
         ) : (
         <>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Login</Link>
         </>
       )}
     </div>

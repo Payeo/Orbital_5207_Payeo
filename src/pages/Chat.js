@@ -12,7 +12,7 @@ import {
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import MessageForm from "../components/MessageForm";
 import Message from "../components/Message";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import SideBar from "../components/Chat/SideBar";
 import { useUsersInfo } from "../hooks/useUsersInfo";
 import { useDocumentQuery } from "../hooks/useDocumentQuery";
@@ -22,6 +22,7 @@ const Chat = () => {
   const [img, setImg] = useState("");
   const [msgs, setMsgs] = useState([]);
   const { convoId } = useParams();  
+  const history = useHistory();
 
   const { data } = useDocumentQuery(
     `conversation-${convoId}`,
@@ -82,7 +83,7 @@ const Chat = () => {
           <div className="messages_container">
             <div className="messages_user">
               <div className="messages_user_header">
-                <a href="/" class="previous" className="messages_user_back">&laquo; </a>
+                <button className="messages_user_back" onClick={history.goBack}>&laquo;</button>
                   <p>
                     {users?.length > 2 && conversation?.group?.groupName
                       ? conversation.group.groupName
