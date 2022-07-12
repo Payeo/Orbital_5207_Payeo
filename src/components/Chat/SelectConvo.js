@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { auth } from "../../firebase";
-import Img from "../../image1.jpg";
+import Img from "../media/default.png";
 import Skeleton from "../Skeleton";
 import { useLastMessage } from "../../hooks/useLastMessage";
 import { useUsersInfo } from "../../hooks/useUsersInfo";

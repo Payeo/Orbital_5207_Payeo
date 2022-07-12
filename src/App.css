@@ -369,12 +369,12 @@ section .form {
 .users_container {
   overflow-y: auto;
   min-width: 390px;
-  border-right: 2px solid var(--color-6);
+  border-right: 1px solid var(--color-6);
   height: auto;
 }
 .users_container_no_convo {
   min-width: 390px;
-  border-right: 2px solid var(--color-6);
+  border-right: 1px solid var(--color-6);
   height: auto;
 }
 .user_wrapper {
@@ -463,10 +463,10 @@ section .form {
   padding: 8px 16px;
 }
 .messages_user {
-  padding: 15px;
+  padding: 11px;
   width: 100%;
   text-align: center;
-  border-bottom: 2px solid var(--color-6);
+  border-bottom: 1px solid var(--color-6);
 }
 .no_conv {
   vertical-align: middle;
@@ -486,7 +486,8 @@ section .form {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  border-top: 2px solid var(--color-6);
+  border-top: 1px solid var(--color-6);
+  padding-top: 4px;
   padding-right: 10px;
 }
 .message_form {

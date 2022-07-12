@@ -33,7 +33,7 @@ const Navbar = (props) => {
         <Switch 
           className="switch"
           onChange={props.toggleTheme} 
-          checked={props.theme === "light"}
+          checked={props.theme === "dark"}
           onColor="#86d3ff"
           onHandleColor="#2693e6"
           handleDiameter={20}

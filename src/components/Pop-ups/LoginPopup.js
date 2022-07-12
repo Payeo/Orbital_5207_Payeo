@@ -49,7 +49,6 @@ const LoginPopUp = props => {
     setData({ ...data, error: null, loading: true });
     signInWithPopup(auth, provider)
       .then(async (res) => {
-        console.log(res.user);
         await setDoc(doc(db, "users", res.user.uid), {
           uid: res.user.uid,
           name: res.user.displayName,
