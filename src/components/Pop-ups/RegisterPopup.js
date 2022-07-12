@@ -56,40 +56,40 @@ const RegisterPopup = props => {
   return (
     <div className="login_popup_box">
       <div className="login_box">
-      <span className="close_icon" onClick={props.handleClose}>x</span>
-        <section>
-          <h3>Create An Account</h3>
-          <form className="form" onSubmit={handleSubmit}>
-            <div className="input_container">
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" value={name} onChange={handleChange} />
-            </div>
-            <div className="input_container">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                name="email"
-                value={email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="input_container">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-              />
-            </div>
-            {error ? <p className="error">{error}</p> : null}
-            <div className="btn_container">
-              <button className="btn" disabled={loading}>
-                {loading ? "Creating ..." : "Register"}
-              </button>
-            </div>
-          </form>
-        </section>
+      <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={props.handleClose} cursor="pointer">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.91421 4.35355L4.56066 7L3.85355 7.70711L0.353553 4.20711L0 3.85355L0.353553 3.5L3.85355 0L4.56066 0.707107L1.91421 3.35355L5.70711 3.35355C9.28325 3.35355 12.2071 6.27741 12.2071 9.85355L12.2071 11.3536H11.2071L11.2071 9.85355C11.2071 6.8297 8.73096 4.35355 5.70711 4.35355H1.91421Z" fill="currentColor" fill-opacity="0.8"/>
+      </svg>
+        <h3>Create An Account</h3>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="input_container">
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" value={name} onChange={handleChange} />
+          </div>
+          <div className="input_container">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input_container">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </div>
+          {error ? <p className="error">{error}</p> : null}
+          <div className="btn_container">
+            <button className="btn" disabled={loading}>
+              {loading ? "Creating ..." : "Register"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
