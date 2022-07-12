@@ -19,13 +19,13 @@ const Login = () => {
       <img src={require('../components/media/payeologo.png')} alt="" className="login_pic"></img>
       <div className="login_buttons_div">
         <input
-            className="btn"
+            className="login_btn_1"
             type="button"
             value="Login"
             onClick={toggleLoginPopup}
             />
-          <input
-          className="btn"
+        <input
+          className="login_btn_2"
           type="button"
           value="Register"
           onClick={toggleRegisterPopup}
