@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <div className="login_div">
-      <img src={require('../components/media/payeologo.png')} alt="" className="login_pic"></img>
+      <img src={require('../components/media/logo.png')} alt="" className="login_pic"></img>
       <div className="login_buttons_div">
         <input
             className="login_btn_1"

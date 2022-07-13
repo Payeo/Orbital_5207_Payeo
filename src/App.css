@@ -90,7 +90,14 @@ section h3 {
 }
 .login_pic {
   padding: 50px;
+  -webkit-animation:spin 20s linear infinite;
+  -moz-animation:spin 20s linear infinite;
+  animation: spin 5s ease-in-out infinite;
 }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .login_buttons_div {
   display: flex;
   flex-direction: column;
@@ -99,14 +106,14 @@ section h3 {
 .login_btn_1 {
   background: #FFFFFF;
   height: 40px;
-  width: 125px;
+  width: 200px;
   border: 2px solid #000000;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease-in-out all;
   font-size: 16px;
-  margin: 20px;
+  margin: 10px;
 }
 .login_btn_1:hover {
   transform: scale(1.05);
@@ -115,14 +122,14 @@ section h3 {
   background: #000000;
   color: white;
   height: 40px;
-  width: 125px;
+  width: 200px;
   border: 2px solid #000000;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease-in-out all;
   font-size: 16px;
-  margin: 20px;
+  margin: 10px;
 }
 .login_btn_2:hover {
   transform: scale(1.05);
@@ -618,13 +625,25 @@ section .form {
   }
   .login_pic {
     padding: 25px;
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
   }
   .login_buttons_div {
-    margin-top: 55px;
     flex-direction: row;
+    width: 100vw;
     justify-content: space-around;
+    display: flex;
+    flex: 0.5;
+    align-items: flex-end;
+  }
+  .login_btn_1 {
+    flex: auto;
+    width: auto;
+
+  }
+  .login_btn_2 {
+    width: auto;
+    flex: auto;
   }
   .login_popup_box {
     width: 100vw;
