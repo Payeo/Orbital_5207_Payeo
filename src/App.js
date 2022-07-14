@@ -24,9 +24,9 @@ function App() {
       <div className="app_container" id={theme}>
         <AuthProvider>
           <BrowserRouter>
+          <Route exact path="/login" component={Login} />
             <Navbar toggleTheme={toggleTheme} theme={theme}/>
             <Switch>
-              <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/:convoId" component={Chat} />
