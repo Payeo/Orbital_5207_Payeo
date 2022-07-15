@@ -88,8 +88,10 @@ section h3 {
   background-color: #d4418e;
   background-image: linear-gradient(0, #d4418e 0%, #66237e 80%);
 }
-.login_pic {
+.login_link {
   padding: 50px;
+}
+.login_pic {
   -webkit-animation:spin 20s linear infinite;
   -moz-animation:spin 20s linear infinite;
   animation: spin 5s ease-in-out infinite;
@@ -360,6 +362,13 @@ section .form {
   width: 50px;
   height: 50px;
   background: #178d7d;
+  transition: all .8s ease-in-out;
+  -webkit-transition: all .8s ease-in-out;
+}
+.button:hover {
+  background: #3db4a4;
+  transition: all .8s ease-in-out;
+  -webkit-transition: all .8s ease-in-out;
 }
 .iconbutton i {
   display: flex;
@@ -372,6 +381,49 @@ section .form {
 .users {
   overflow-y: auto;
   height: auto;
+}
+.loading_user{
+  display: flex; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  padding-left: 1.25rem;
+  padding-right: 1.25rem; 
+  align-items: stretch; 
+  gap: 0.5rem; 
+}
+.loading_user_photo {
+  flex-shrink: 0; 
+  width: 3.5rem; 
+  height: 3.5rem; 
+  border-radius: 9999px; 
+  fill: var(--color-6);
+  background-color: var(--color-6);
+}
+.loading_user_detail {
+  display: flex; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  flex-direction: column; 
+  flex-grow: 1; 
+  align-items: flex-start; 
+  gap: 0.5rem; 
+}
+.loading_user_name {
+  flex-grow: 1; 
+  width: 50%; 
+  fill: var(--color-6);
+  background-color: var(--color-6);
+}
+.loading_last_msg {
+  flex-grow: 1; 
+  width: 66.66666%; 
+  fill: var(--color-6);
+  background-color: var(--color-6);
+}
+.loading_last_msg_2 {
+  flex-grow: 1; 
+  width: 66.66666%; 
+  height: 100%;
 }
 .users_container {
   overflow-y: auto;
@@ -393,6 +445,16 @@ section .form {
   width: 100%;
   padding-left: 3%;
   align-items: center;
+  transition: all .6s ease-in-out;
+  -moz-transition: all .6s ease-in-out;
+  -webkit-transition: all .6s ease-in-out;
+}
+.user_info:hover {
+  background-color: var(--color-7);
+  background: #48a197;
+  transition: all .6s ease-in-out;
+  -moz-transition: all .6s ease-in-out;
+  -webkit-transition: all .6s ease-in-out;
 }
 .user_detail {
   display: flex;
@@ -770,6 +832,9 @@ section .form {
 .login_popup_back {
   width: fit-content;
   cursor: pointer;
+}
+.google {
+  padding-left: 8px;
 }
 
 /* width */

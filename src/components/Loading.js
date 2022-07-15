@@ -1,9 +1,10 @@
 import React from "react";
+import HashLoader from "react-spinners/HashLoader";
 
 const Loading = () => {
   return (
     <div style={{ position: "relative" }}>
-      <h2
+      <div
         style={{
           position: "fixed",
           top: "50%",
@@ -11,8 +12,8 @@ const Loading = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        Loading...
-      </h2>
+        <HashLoader />
+      </div>
     </div>
   );
 };
