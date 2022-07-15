@@ -7,10 +7,11 @@ import {
   serverTimestamp,
   where,
 } from "firebase/firestore";
-import Img from "../../image1.jpg";
+import Img from "../media/default.png";
 import { auth, db } from "../../firebase";
 import { useCollectionQuery } from "../../hooks/useCollectionQuery";
 import { useHistory } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const CreateConversation = ({ setIsOpened }) => {
   const currentUser = auth.currentUser.uid;
@@ -99,7 +100,7 @@ const CreateConversation = ({ setIsOpened }) => {
         </div>
         {loading ? (
           <div className="create_convo_loading">
-            <p>Loading</p>
+            <ClipLoader />
           </div>
         ) : error ? (
           <div className="create_convo_loading">
@@ -109,7 +110,7 @@ const CreateConversation = ({ setIsOpened }) => {
           <>
             {isCreating && (
               <div className="creating_convo">
-                <p>Loading</p>
+                <ClipLoader />
               </div>
             )}
             <div className="create_convo_users">

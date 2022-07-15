@@ -1,4 +1,4 @@
-import React, { useContext, createContext } from "react";
+import React, { useContext, createContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { signOut } from "firebase/auth";
@@ -6,17 +6,20 @@ import { updateDoc, doc } from "firebase/firestore";
 import { AuthContext } from "../context/auth";
 import { useHistory } from "react-router-dom";
 import Switch from "react-switch";
+import { BeatLoader } from "react-spinners";
 
 export const ThemeContext = createContext(null);
 
 const Navbar = (props) => {
   const history = useHistory();
   const { user } = useContext(AuthContext);
+  const [logoutLoading, setLogoutLoading] = useState(false);
 
   const handleSignout = async () => {
     await updateDoc(doc(db, "users", auth.currentUser.uid), {
       isOnline: false,
     });
+    setLogoutLoading(true);
     await signOut(auth);
     history.replace("/login");
   };
@@ -33,7 +36,7 @@ const Navbar = (props) => {
         <Switch 
           className="switch"
           onChange={props.toggleTheme} 
-          checked={props.theme === "light"}
+          checked={props.theme === "dark"}
           onColor="#86d3ff"
           onHandleColor="#2693e6"
           handleDiameter={20}
@@ -49,7 +52,7 @@ const Navbar = (props) => {
         <>
           <Link to="/profile">Profile</Link>
           <button className="btn" onClick={handleSignout}>
-            Logout
+            {logoutLoading ? <BeatLoader size={8} /> : "Logout"}
           </button>
         </>
         ) : (

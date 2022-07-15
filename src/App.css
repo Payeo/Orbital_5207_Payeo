@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #light {
@@ -81,16 +82,59 @@ section h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: 100%;
+  background-color: #d4418e;
+  background-image: linear-gradient(0, #d4418e 0%, #66237e 80%);
 }
-.login_pic {
+.login_link {
   padding: 50px;
 }
+.login_pic {
+  -webkit-animation:spin 20s linear infinite;
+  -moz-animation:spin 20s linear infinite;
+  animation: spin 5s ease-in-out infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .login_buttons_div {
   display: flex;
-  align-items: space-around;
+  flex-direction: column;
+  align-items: space-between;
+}
+.login_btn_1 {
+  background: #FFFFFF;
+  height: 40px;
+  width: 200px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+  font-size: 16px;
+  margin: 10px;
+}
+.login_btn_1:hover {
+  transform: scale(1.05);
+}
+.login_btn_2 {
+  background: #000000;
+  color: white;
+  height: 40px;
+  width: 200px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+  font-size: 16px;
+  margin: 10px;
+}
+.login_btn_2:hover {
+  transform: scale(1.05);
 }
 .login_border {
   border-bottom: 1px solid var(--color-6);
@@ -152,7 +196,7 @@ section .form {
   z-index: 20; 
   justify-content: center; 
   align-items: center; 
-  width: 100%; 
+  width: 100%;
   height: 100%; 
   background: #00000080;
 }
@@ -318,6 +362,13 @@ section .form {
   width: 50px;
   height: 50px;
   background: #178d7d;
+  transition: all .8s ease-in-out;
+  -webkit-transition: all .8s ease-in-out;
+}
+.button:hover {
+  background: #3db4a4;
+  transition: all .8s ease-in-out;
+  -webkit-transition: all .8s ease-in-out;
 }
 .iconbutton i {
   display: flex;
@@ -331,15 +382,58 @@ section .form {
   overflow-y: auto;
   height: auto;
 }
+.loading_user{
+  display: flex; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  padding-left: 1.25rem;
+  padding-right: 1.25rem; 
+  align-items: stretch; 
+  gap: 0.5rem; 
+}
+.loading_user_photo {
+  flex-shrink: 0; 
+  width: 3.5rem; 
+  height: 3.5rem; 
+  border-radius: 9999px; 
+  fill: var(--color-6);
+  background-color: var(--color-6);
+}
+.loading_user_detail {
+  display: flex; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  flex-direction: column; 
+  flex-grow: 1; 
+  align-items: flex-start; 
+  gap: 0.5rem; 
+}
+.loading_user_name {
+  flex-grow: 1; 
+  width: 50%; 
+  fill: var(--color-6);
+  background-color: var(--color-6);
+}
+.loading_last_msg {
+  flex-grow: 1; 
+  width: 66.66666%; 
+  fill: var(--color-6);
+  background-color: var(--color-6);
+}
+.loading_last_msg_2 {
+  flex-grow: 1; 
+  width: 66.66666%; 
+  height: 100%;
+}
 .users_container {
   overflow-y: auto;
   min-width: 390px;
-  border-right: 2px solid var(--color-6);
+  border-right: 1px solid var(--color-6);
   height: auto;
 }
 .users_container_no_convo {
   min-width: 390px;
-  border-right: 2px solid var(--color-6);
+  border-right: 1px solid var(--color-6);
   height: auto;
 }
 .user_wrapper {
@@ -351,6 +445,16 @@ section .form {
   width: 100%;
   padding-left: 3%;
   align-items: center;
+  transition: all .6s ease-in-out;
+  -moz-transition: all .6s ease-in-out;
+  -webkit-transition: all .6s ease-in-out;
+}
+.user_info:hover {
+  background-color: var(--color-7);
+  background: #48a197;
+  transition: all .6s ease-in-out;
+  -moz-transition: all .6s ease-in-out;
+  -webkit-transition: all .6s ease-in-out;
 }
 .user_detail {
   display: flex;
@@ -428,10 +532,10 @@ section .form {
   padding: 8px 16px;
 }
 .messages_user {
-  padding: 15px;
+  padding: 11px;
   width: 100%;
   text-align: center;
-  border-bottom: 2px solid var(--color-6);
+  border-bottom: 1px solid var(--color-6);
 }
 .no_conv {
   vertical-align: middle;
@@ -451,7 +555,8 @@ section .form {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  border-top: 2px solid var(--color-6);
+  border-top: 1px solid var(--color-6);
+  padding-top: 4px;
   padding-right: 10px;
 }
 .message_form {
@@ -577,13 +682,45 @@ section .form {
     color: var(--color-2);
     padding: 8px 16px;
   }
+  .login_div {
+    flex-direction: column;
+  }
+  .login_pic {
+    padding: 25px;
+    width: 150px;
+    height: 150px;
+  }
+  .login_buttons_div {
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
+    display: flex;
+    flex: 0.5;
+    align-items: flex-end;
+  }
+  .login_btn_1 {
+    flex: auto;
+    width: auto;
+
+  }
+  .login_btn_2 {
+    width: auto;
+    flex: auto;
+  }
   .login_popup_box {
     width: 100vw;
     height: 100vh;
   }
   .login_box {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+  }
+  .stop_propagation {
+    width: 100%;
+    height: 100%;
+  }
+  .create_convo_users {
+    height: 80%;
   }
 }
 
@@ -680,14 +817,24 @@ section .form {
 }
 .login_box {
   position: relative;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
-  height: 90%;
+  height: 100%;
   background: var(--color-8);
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
+}
+.login_form {
+  width: 100%;
+}
+.login_popup_back {
+  width: fit-content;
+  cursor: pointer;
+}
+.google {
+  padding-left: 8px;
 }
 
 /* width */

@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { auth } from "../../firebase";
-import Img from "../../image1.jpg";
+import Img from "../media/default.png";
 import Skeleton from "../Skeleton";
 import { useLastMessage } from "../../hooks/useLastMessage";
 import { useUsersInfo } from "../../hooks/useUsersInfo";
@@ -23,11 +23,11 @@ const SelectConversation = ({
 
   if (loading)
     return (
-      <div>
-        <Skeleton />
-        <div>
-          <Skeleton />
-          <Skeleton />
+      <div className="loading_user">
+        <Skeleton className="loading_user_photo"/>
+        <div className="loading_user_detail">
+          <Skeleton className="loading_user_name"/>
+          <Skeleton className="loading_last_msg"/>
         </div>
       </div>
     );
@@ -50,7 +50,7 @@ if (conversation.users.length === 2) {
                 {filtered?.[0].data()?.name}
               </p>
               {lastMessageLoading ? (
-                <Skeleton>Loading...</Skeleton>
+                <Skeleton className="loading_last_msg">Loading...</Skeleton>
               ) : (
                 <p className="truncate">
                   {lastMessage?.message}
@@ -105,7 +105,7 @@ if (conversation.users.length === 2) {
                 .join(", ")}
             </p>
             {lastMessageLoading ? (
-              <Skeleton>Loading...</Skeleton>
+              <Skeleton><p className="truncate">Loading ...</p></Skeleton>
             ) : (
               <p className="truncate">
                 {lastMessage?.message}

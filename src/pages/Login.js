@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginPopUp from "../components/Pop-ups/LoginPopup";
 import RegisterPopup from "../components/Pop-ups/RegisterPopup";
+import ReactTooltip from 'react-tooltip';
 
 const Login = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -16,16 +17,19 @@ const Login = () => {
 
   return (
     <div className="login_div">
-      <img src={require('../components/media/logo.png')} alt="" className="login_pic"></img>
+      <a href="https://github.com/Payeo/Orbital_5207_Payeo" className="login_link">
+        <ReactTooltip />
+        <img src={require('../components/media/logo.png')} alt="" className="login_pic" data-tip="Click to check out our Github" />
+      </a>
       <div className="login_buttons_div">
         <input
-            className="btn"
+            className="login_btn_1"
             type="button"
             value="Login"
             onClick={toggleLoginPopup}
             />
-          <input
-          className="btn"
+        <input
+          className="login_btn_2"
           type="button"
           value="Register"
           onClick={toggleRegisterPopup}
