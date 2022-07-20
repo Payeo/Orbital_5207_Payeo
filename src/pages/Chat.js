@@ -10,10 +10,10 @@ import {
   doc,
 } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import MessageForm from "../components/MessageForm";
-import Message from "../components/Message";
-import { useParams, useHistory } from "react-router-dom";
-import SideBar from "../components/Chat/SideBar";
+import MessageForm from "../components/Chat/MessageForm";
+import Message from "../components/Chat/Message";
+import { useParams, useHistory, Link } from "react-router-dom";
+import SideBar from "../components/SideBar/SideBar";
 import { useUsersInfo } from "../hooks/useUsersInfo";
 import { useDocumentQuery } from "../hooks/useDocumentQuery";
 
@@ -76,40 +76,42 @@ const Chat = () => {
   };
 
     return (
-        <div className="home_container">
-          <div className="users_container">
-            <SideBar></SideBar>
-          </div>
-          <div className="messages_container">
-            <div className="messages_user">
-              <div className="messages_user_header">
-                <button className="messages_user_back" onClick={history.goBack}>&laquo;</button>
-                  <p>
-                    {users?.length > 2 && conversation?.group?.groupName
-                      ? conversation.group.groupName
-                      : filtered
-                          ?.map((user) => user?.data().name)
-                          .slice(0, 3)
-                          .join(", ")}
-                  </p>
-              </div>
-            </div>
-            <div className="messages">
-                {msgs.length
-                ? msgs.map((msg, i) => (
-                    <Message key={i} msg={msg} user1={currentUser} />
-                    ))
-                : null}
-            </div>
-            <MessageForm
-                handleSubmit={handleSubmit}
-                text={text}
-                setText={setText}
-                setImg={setImg}
-                currentUser={currentUser}
-            />
-          </div>
+      <div className="home_container">
+        <div className="users_container">
+          <SideBar></SideBar>
         </div>
+        <div className="messages_container">
+          <div className="messages_user">
+            <div className="messages_user_header">
+              <button className="messages_user_back" onClick={history.goBack}>&laquo;</button>
+                <p>
+                  {users?.length === 2 
+                  ? <Link to={`/users/${filtered[0]?.data().uid}`} className="messages_user_name"> {filtered[0]?.data().name} </Link>
+                  : users?.length > 2 && conversation?.group?.groupName
+                    ? conversation.group.groupName
+                    : filtered
+                        ?.map((user) => user?.data().name)
+                        .slice(0, 3)
+                        .join(", ")}
+                </p>
+            </div>
+          </div>
+          <div className="messages">
+              {msgs.length
+              ? msgs.map((msg, i) => (
+                  <Message key={i} msg={msg} user1={currentUser} />
+                  ))
+              : null}
+          </div>
+          <MessageForm
+              handleSubmit={handleSubmit}
+              text={text}
+              setText={setText}
+              setImg={setImg}
+              currentUser={currentUser}
+          />
+        </div>
+      </div>
       );
 }
 

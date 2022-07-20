@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Profile from './pages/Profile';
 import Chat from './pages/Chat';
+import User from "./pages/User";
 import AuthProvider from "./context/auth";
 import PrivateRoute from "./components/PrivateRoute";
 import { useState } from "react";
@@ -29,6 +30,7 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/" component={Home} />
+              <PrivateRoute exact path="/users/:userId" component={User} />
               <PrivateRoute exact path="/:convoId" component={Chat} />
             </Switch>
           </BrowserRouter>

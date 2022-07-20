@@ -302,6 +302,9 @@ section .form {
 .profile_container {
   display: flex;
   align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 10px;
 }
 .img_container {
   position: relative;
@@ -337,12 +340,12 @@ section .form {
 }
 .home_container {
   display: flex;
-  height: auto;
+  height: calc(100% - 70px);
   width: auto;
 }
 .home_container_no_convo {
   display: flex;
-  height: auto;
+  height: calc(100% - 70px);
   width: auto;
 }
 .floating_btn_container{
@@ -380,7 +383,11 @@ section .form {
 } 
 .users {
   overflow-y: auto;
-  height: auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.users::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }
 .loading_user{
   display: flex; 
@@ -426,15 +433,18 @@ section .form {
   height: 100%;
 }
 .users_container {
-  overflow-y: auto;
   min-width: 390px;
   border-right: 1px solid var(--color-6);
-  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .users_container_no_convo {
   min-width: 390px;
   border-right: 1px solid var(--color-6);
-  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .user_wrapper {
   cursor: pointer;
@@ -515,6 +525,11 @@ section .form {
   align-items: center;
   text-align: center;
 }
+.messages_user_name {
+  text-decoration: none;
+  color: var(--color-2);
+  cursor: pointer;
+}
 .messages_user_back {
   font-size: 36px;
   text-decoration: none;
@@ -579,7 +594,7 @@ section .form {
   border-radius: 25px;
   border: none;
   color: var(--color-2);
-  background-color: var(--color-6);
+  background-color: var(--color-7);
 }
 .messages { 
   height: calc(100vh - 210px);
