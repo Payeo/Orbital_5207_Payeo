@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -335,8 +337,15 @@ section .form {
 .text_container {
   flex-grow: 1;
 }
-.text_container h3 {
+.text_container h1 {
   text-align: left;
+  font-family: Comfortaa;
+}
+.text_container p {
+  font-family: Comfortaa;
+}
+.text_container small {
+  font-family: Comfortaa;
 }
 .home_container {
   display: flex;
@@ -520,6 +529,7 @@ section .form {
   flex-direction: column;
 }
 .messages_user_header {
+  height: 65px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -531,20 +541,14 @@ section .form {
   cursor: pointer;
 }
 .messages_user_back {
-  font-size: 36px;
-  text-decoration: none;
-  background:none; 
-  border:none;    
   display: hidden;
   visibility: hidden;
-  color: var(--color-2);
-  padding: 8px 16px;
+  padding: 10px 10px 25px 10px;
 }
 .messages_user_back:hover {
-  background-color: #00000080;
   text-decoration: none;
   display: inline-block;
-  padding: 8px 16px;
+  padding: 10px 10px 25px 10px;
 }
 .messages_user {
   padding: 11px;
@@ -658,119 +662,53 @@ section .form {
 .sm_screen {
   display: none;
 }
-@media screen and (max-width: 767px) {
-  .home_container_no_convo {
-    height: 100%;
-    flex-direction: row;
-  }
-  .users_container_no_convo {
-    width: 100%;
-    flex-grow: 1;
-    border-right: 0px;
-  }
-  .users_container {
-    display: none;
-    visibility: hidden;
-  }
-  .floating_btn_container {
-    bottom: 5%;
-    left: 80%;
-  }
-  .message_form {
-    left: 3%;
-    right: 0;
-    bottom: 5px;
-    font-size: 16px;
-  }
-  .message_wrapper p {
-    max-width: 75%;
-  }
-  .no_conv {
-    display: none;
-    visibility: hidden;
-  }
-  .messages_user_back {
-    font-size: 36px;
-    text-decoration: none;
-    display: inline-block;
-    visibility: visible;
-    color: var(--color-2);
-    padding: 8px 16px;
-  }
-  .login_div {
-    flex-direction: column;
-  }
-  .login_pic {
-    padding: 25px;
-    width: 150px;
-    height: 150px;
-  }
-  .login_buttons_div {
-    flex-direction: row;
-    width: 100vw;
-    justify-content: space-around;
-    display: flex;
-    flex: 0.5;
-    align-items: flex-end;
-  }
-  .login_btn_1 {
-    flex: auto;
-    width: auto;
-
-  }
-  .login_btn_2 {
-    width: auto;
-    flex: auto;
-  }
-  .login_popup_box {
-    width: 100vw;
-    height: 100vh;
-  }
-  .login_box {
-    width: 100%;
-    height: 100%;
-  }
-  .stop_propagation {
-    width: 100%;
-    height: 100%;
-  }
-  .create_convo_users {
-    height: 80%;
-  }
+.user_profile_container {
+  height: fit-content;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow-y: auto;
 }
-
-@media screen and (max-width: 576px) {
-  .home_container {
-    width: 100vw;
-  }
-  .user_wrapper {
-    display: none;
-  }
-  .sm_container {
-    padding: 10px 0px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .sm_screen {
-    display: inline-block;
-  }
-  .message_form input {
-    width: 100%;
-    margin: 0px 10px;
-  }
-  .message_form .btn {
-    margin: 0px;
-  }
-
-  .message_wrapper p {
-    max-width: 100%;
-  }
+.balance_container {
+  height: 50%;
+  background: linear-gradient(90deg, rgba(134, 88, 192, 0.7) 0%, rgba(139, 191, 239, 0.7) 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px 50px 50px 50px;
+  margin-top: 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.balance_container h3 {
+  font-family: Comfortaa;
+}
+.balance_container p {
+  font-family: Comfortaa;
+}
+.balance {
+  padding: 50px;
+  height: 100%;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.owed {
+  color: #7DD367;
+  font-size: 72px;
+}
+.you_owe {
+  color: #DE3131;
+  font-size: 72px;
 }
 /* Popup style */
 .popup_box {
   position: fixed;
+  display: flex;
+  align-items: center;
   background: #00000080;;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
@@ -785,16 +723,18 @@ section .form {
 }
 .box {
   position: relative;
-  width: 60%;
   margin: 0 auto;
-  height: 40%;
-  max-height: 70vh;
-  margin-top: calc(100vh - 85vh - 20px);
-  background: var(--color-8);
+  height: 80%;
+  width: 80%;
+  background: linear-gradient(180deg, #8BBFEF 0%, #8658C0 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  padding: 20px;
   border: 1px solid #999;
   overflow: auto;
+  padding: 20px;
+}
+.box b {
+  padding-left: 10px;
 }
 .close_icon {
   content: 'x';
@@ -851,7 +791,170 @@ section .form {
 .google {
   padding-left: 8px;
 }
+@media screen and (max-width: 1280px) {
+  .balance_container {
+    height: fit-content;
+    background: linear-gradient(180deg, rgba(134, 88, 192, 0.7) 0%, rgba(139, 191, 239, 0.7) 100%);
+  }
+  .balance {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 767px) {
+  .home_container_no_convo {
+    height: 100%;
+    flex-direction: row;
+  }
+  .users_container_no_convo {
+    width: 100%;
+    flex-grow: 1;
+    border-right: 0px;
+  }
+  .users_container {
+    display: none;
+    visibility: hidden;
+  }
+  .floating_btn_container {
+    bottom: 5%;
+    left: 80%;
+  }
+  .message_form {
+    left: 3%;
+    right: 0;
+    bottom: 5px;
+    font-size: 16px;
+  }
+  .message_wrapper p {
+    max-width: 75%;
+  }
+  .no_conv {
+    display: none;
+    visibility: hidden;
+  }
+  .messages_user_back {
+    font-size: 36px;
+    text-decoration: none;
+    display: inline-block;
+    visibility: visible;
+  }
+  .login_div {
+    flex-direction: column;
+  }
+  .login_pic {
+    padding: 25px;
+    width: 150px;
+    height: 150px;
+  }
+  .login_buttons_div {
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
+    display: flex;
+    flex: 0.5;
+    align-items: flex-end;
+  }
+  .login_btn_1 {
+    flex: auto;
+    width: auto;
 
+  }
+  .login_btn_2 {
+    width: auto;
+    flex: auto;
+  }
+  .login_popup_box {
+    width: 100vw;
+    height: 100vh;
+  }
+  .login_box {
+    width: 100%;
+    height: 100%;
+  }
+  .stop_propagation {
+    width: 100%;
+    height: 100%;
+  }
+  .create_convo_users {
+    height: 80%;
+  }
+  .profile_container {
+    flex-direction: column;
+    margin: 20px 0px 0px 0px;
+    width: 100%;
+    padding: 0;
+  }
+  .text_container h1 {
+    font-size: 25px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .text_container p {
+    font-size: 15px;
+    text-align: center;
+  }
+  .text_container small {
+    text-align: center;
+  }
+  .balance_container {
+    height: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius: 50px 50px 0px 0px;
+  }
+  .balance {
+    flex-direction: column;
+  }
+  .owed {
+    color: #7DD367;
+    font-size: 36px;
+  }
+  .you_owe {
+    color: #DE3131;
+    font-size: 36px;
+  }
+  .img_container {
+    justify-content: center;
+  }
+  .img_container img {
+    width: 150px;
+    height: 150px;
+  }
+  .user_profile_container {
+    height: auto;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .home_container {
+    width: 100vw;
+  }
+  .user_wrapper {
+    display: none;
+  }
+  .sm_container {
+    padding: 10px 0px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .sm_screen {
+    display: inline-block;
+  }
+  .message_form input {
+    width: 100%;
+    margin: 0px 10px;
+  }
+  .message_form .btn {
+    margin: 0px;
+  }
+
+  .message_wrapper p {
+    max-width: 100%;
+  }
+}
 /* width */
 ::-webkit-scrollbar {
   width: 7px;

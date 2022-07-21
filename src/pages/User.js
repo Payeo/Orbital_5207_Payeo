@@ -23,20 +23,27 @@ const User = () => {
         <div className="users_container">
             <SideBar></SideBar>
         </div>
-        <div className="messages_container">
+        <div className="user_profile_container">
           <div className="profile_container">
             <div className="img_container">
               <img src={Img} alt="avatar" />
-                <div className="overlay">
-                    <div>
-                    </div>
-                </div>
             </div>
             <div className="text_container">
-              <h3>{user?.name}</h3>
+              <h1>{user?.name}</h1>
               <p>{user?.email}</p>
-              <hr />
-              <small>Joined on: {user?.createdAt.toDate().toDateString()}</small>
+              <p>Joined on: {user?.createdAt.toDate().toDateString()}</p>
+            </div>
+          </div>
+          <div className="balance_container">
+            <div className="balance">
+              <div className="debit">
+                <h3>Total amount owed</h3>
+                <p className="owed">$12345</p>
+              </div>
+              <div className="credit">
+                <h3>Total amount you owe</h3>
+                <p className="you_owe">$12345</p>
+              </div>
             </div>
           </div>
         </div>
