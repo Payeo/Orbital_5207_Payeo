@@ -67,6 +67,7 @@ const Chat = () => {
     await addDoc(collection(db, "conversations", id, "messages"), {
       text,
       from: currentUser,
+      type: "Message",
       createdAt: Timestamp.fromDate(new Date()),
       media: url || "",
     });

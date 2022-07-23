@@ -7,7 +7,9 @@ import { useParams } from "react-router-dom";
 
 const User = () => {
   const { userId } = useParams();
-  const [ user, setUser ] = useState();
+  const [ user, setUser ] = useState();  
+  var credit = 0;
+  var debit = 0;
 
   useEffect(() => {
     getDoc(doc(db, "users", userId)).then((docSnap) => {
@@ -16,6 +18,7 @@ const User = () => {
       }
     });
   });
+
 
   return (
     <>
@@ -38,11 +41,11 @@ const User = () => {
             <div className="balance">
               <div className="debit">
                 <h3>Total amount owed</h3>
-                <p className="owed">$12345</p>
+                <p className="owed">${credit}</p>
               </div>
               <div className="credit">
                 <h3>Total amount you owe</h3>
-                <p className="you_owe">$12345</p>
+                <p className="you_owe">${debit}</p>
               </div>
             </div>
           </div>
