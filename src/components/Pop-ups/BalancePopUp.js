@@ -2,12 +2,7 @@ import React, { useState } from "react";
 
 import { db } from "../../firebase";
 import Img from "../media/default.png";
-import {
-  Timestamp,
-  addDoc,
-  collection,
-  doc,
-} from "firebase/firestore";
+import { doc, addDoc, setDoc, Timestamp, collection } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import CreditDebitPopup from "./CreditDebitPopup";
 import { useDocumentQuery } from "../../hooks/useDocumentQuery";
@@ -16,7 +11,6 @@ import Plus from "../media/plus.svg";
 const BalancePopup = props => {
   const { convoId } = useParams();  
   const [ isOpen, setIsOpen ] = useState();
-  const [balance, setBalance] = useState("");
 
   var credit = 0;
   var debit = 0;
@@ -45,6 +39,39 @@ const BalancePopup = props => {
     setIsOpen(!isOpen);
   }
 
+  const toggleApplication = async () => {
+    await addDoc(collection(db, "conversations", convoId, "messages"), {
+      text: "The payment has been made.",
+      type: "Payment",
+      from: props.currentUser,
+      createdAt: Timestamp.fromDate(new Date()),
+      media: "",
+    });
+
+    await setDoc(doc(db, "conversations", convoId, "balance", props.currentUser), {
+      from: props.currentUser,
+      to: props.users[0]?.data().uid,
+      remarks: "Payment made",
+      amount: 0,
+      createdAt: Timestamp.fromDate(new Date()),
+    });
+
+    await setDoc(doc(db, "conversations", convoId, "balance", props.users[0]?.data().uid), {
+      from: props.users[0]?.data().uid,
+      to: props.currentUser,
+      remarks: "Payment made",
+      amount: 0,
+      createdAt: Timestamp.fromDate(new Date()),
+    });
+
+    var now = new Date().valueOf();
+    setTimeout(function () {
+        if (new Date().valueOf() - now > 100) return;
+        window.location = "https://apps.apple.com/sg/app/dbs-paylah/id878528688";
+    }, 25);
+    window.location = "appname://";
+  }
+
   return (
     <div className="popup_box">
       {isOpen && <CreditDebitPopup handleClose={togglePopup} convoId={convoId} currentUser={props.currentUser} otherUser={props.users[0]?.data()} />}
@@ -61,26 +88,30 @@ const BalancePopup = props => {
           <h1>{props.users[0]?.data().name}</h1>
           <button className="transaction_button" onClick={() => togglePopup()}><img src={Plus} alt="plus"></img></button>
         </div>
-        <div>
-          <div className="calculated">
-            {result > 0 ? 'Owes you: ' + result : 'You Owe: ' + -1 * result}
-          </div>
-        </div>
-        <div className="balance_div">
-          <h3>Credit</h3>
-          <div className="calculated">
-            <div className="you_owe">
-              ${credit}
+        <div className="calculated_div">
+          <div className="balance_div">
+            <div className="calculated">
+              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> result </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${-1 * result} </div></>}
             </div>
           </div>
-        </div>
-        <div className="balance_div">
-          <h3>Debit</h3>
-          <div className="calculated">
-            <div className="owed">
-                ${debit}
+            <div className="balance_div">
+            <div className="calculated">
+              <h3>Credit</h3>
+              <div className="you_owe">
+                ${credit}
+              </div>
+            </div>
+            <div className="calculated">
+              <h3>Debit</h3>
+              <div className="owed">
+                  ${debit}
+              </div>
             </div>
           </div>
+          <div className="balance_div">
+        </div>
+          <button className="btn" onClick={() => toggleApplication()}>Pay Now</button>
+          <button className="btn">Chat Now</button>
         </div>
       </div>
     </div>

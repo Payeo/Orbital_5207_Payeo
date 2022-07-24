@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Img from "../components/media/default.png";
-import { db } from "../firebase";
-import { getDoc, doc } from "firebase/firestore";
+import { db, auth } from "../firebase";
+import { getDoc, doc, collection, query, where, onSnapshot, getDocs } from "firebase/firestore";
 import SideBar from "../components/SideBar/SideBar";
 import { useParams } from "react-router-dom";
 
 const User = () => {
   const { userId } = useParams();
+  const currentUser = auth.currentUser.uid;
   const [ user, setUser ] = useState();  
-  var credit = 0;
-  var debit = 0;
+  const [ convo, setConvo ] = useState(null);
+  const [ credit, setCredit ] = useState(0);
+  const [ debit, setDebit ] = useState(0);
+  const [ isLoading, setIsLoading ] = useState(false);
 
   useEffect(() => {
     getDoc(doc(db, "users", userId)).then((docSnap) => {
@@ -19,6 +22,45 @@ const User = () => {
     });
   });
 
+  useEffect(() => {
+    async function fetchConvo() {
+      try {
+        setIsLoading(true);
+        const conversationRef = collection(db, "conversations");
+        const q = query(conversationRef, where("users", "array-contains", currentUser));
+
+        const querySnapshot = await getDocs(q);
+        let allDocs = [];
+        querySnapshot.forEach((doc) => {
+          if (doc.data().users.length === 2 && doc.data().users.includes(userId)) {
+            allDocs.push(doc.id)
+          }
+        })
+
+        setConvo(allDocs[0]);
+
+        if (convo) {
+          const balanceRef = collection(db, "conversations", convo, "balance");
+          const q = query(balanceRef);
+          
+          onSnapshot(q, (balanceSnapshot) => {
+            balanceSnapshot.forEach((bal) => {
+              if (bal.data().from === currentUser) {
+                setCredit(bal.data().amount);
+              } else {
+                setDebit(bal.data().amount);
+              }
+            })
+          });
+        }
+
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchConvo();
+    setIsLoading(false);
+    }, [currentUser, convo, userId]);
 
   return (
     <>
@@ -41,11 +83,11 @@ const User = () => {
             <div className="balance">
               <div className="debit">
                 <h3>Total amount owed</h3>
-                <p className="owed">${credit}</p>
+                {isLoading ? <p>Loading ...</p> : <p className="owed">${credit}</p>}
               </div>
               <div className="credit">
                 <h3>Total amount you owe</h3>
-                <p className="you_owe">${debit}</p>
+                {isLoading ? <p>Loading ...</p> : <p className="you_owe">${debit}</p>}
               </div>
             </div>
           </div>
