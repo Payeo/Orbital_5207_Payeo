@@ -92,20 +92,20 @@ const BalancePopup = props => {
         <div className="calculated_div">
           <div className="balance_div">
             <div className="calculated">
-              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> {result} </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${-1 * result} </div></>}
+              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> ${result.toFixed(2)} </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${Math.abs(result.toFixed(2))} </div></>}
             </div>
           </div>
             <div className="balance_div">
             <div className="calculated">
               <h3>Credit</h3>
               <div className="you_owe">
-                ${credit}
+                ${credit.toFixed(2)}
               </div>
             </div>
             <div className="calculated">
               <h3>Debit</h3>
               <div className="owed">
-                  ${debit}
+                  ${debit.toFixed(2)}
               </div>
             </div>
           </div>

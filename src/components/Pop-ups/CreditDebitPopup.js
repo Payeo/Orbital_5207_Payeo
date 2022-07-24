@@ -65,8 +65,7 @@ const CreditDebitPopup = props => {
         // eslint-disable-next-line
       } else if (buttonUsed.current.buttonId == "1") {
         const text = "$" + balance + " has been Debited. Remarks: " + remarks;
-        // eslint-disable-next-line
-        const amount = debit == 0 ? balance : Number(debit) + Number(balance);
+        const amount = Number(debit) + Number(balance);
 
         await addDoc(collection(db, "conversations", props.convoId, "messages"), {
           text,
