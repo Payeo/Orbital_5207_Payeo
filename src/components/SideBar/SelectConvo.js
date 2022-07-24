@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { auth } from "../../firebase";
 import Img from "../media/default.png";
+import GroupImg from "../media/group.png";
 import Skeleton from "../Skeleton";
 import { useLastMessage } from "../../hooks/useLastMessage";
 import { useUsersInfo } from "../../hooks/useUsersInfo";
@@ -86,13 +87,8 @@ if (conversation.users.length === 2) {
         <div className="user_info">
           <div className="group_avatar_div">
             <img
-              className="avatar"
-              src={Img}
-              alt=""
-            />
-            <img
-              className={`group_avatar ${ conversationId === convoId && "selected_user"}`}
-              src={Img}
+              className={`avatar ${ conversationId === convoId && "selected_user"}`}
+              src={GroupImg}
               alt=""
             />
           </div>

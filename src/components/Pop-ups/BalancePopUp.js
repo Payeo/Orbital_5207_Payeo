@@ -40,8 +40,9 @@ const BalancePopup = props => {
   }
 
   const toggleApplication = async () => {
+    const paid = Math.abs(result);
     await addDoc(collection(db, "conversations", convoId, "messages"), {
-      text: "The payment has been made.",
+      text: "The payment of $" + paid + " has been made.",
       type: "Payment",
       from: props.currentUser,
       createdAt: Timestamp.fromDate(new Date()),
@@ -91,7 +92,7 @@ const BalancePopup = props => {
         <div className="calculated_div">
           <div className="balance_div">
             <div className="calculated">
-              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> result </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${-1 * result} </div></>}
+              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> {result} </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${-1 * result} </div></>}
             </div>
           </div>
             <div className="balance_div">
@@ -110,8 +111,10 @@ const BalancePopup = props => {
           </div>
           <div className="balance_div">
         </div>
+        <div className="button_div">
           <button className="btn" onClick={() => toggleApplication()}>Pay Now</button>
-          <button className="btn">Chat Now</button>
+          <button className="btn" onClick={props.handleClose}>Chat Now</button>
+        </div>
         </div>
       </div>
     </div>
