@@ -32,7 +32,7 @@ Yeo Yu Jie: yeo.yujie@gmail.com\
 \
 Project Link: https://github.com/Payeo/Orbital_5207_Payeo \
 \
-Currently deployed on Netifly: https://steady-lamington-29fbca.netlify.app/
+Currently deployed on Netifly: https://payeo.netlify.app/
 
 ## Proof-Of-Concept Video
 https://youtu.be/4HfLygDwJhs 
