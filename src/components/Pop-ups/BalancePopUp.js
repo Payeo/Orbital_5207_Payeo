@@ -91,7 +91,7 @@ const BalancePopup = props => {
         <div className="calculated_div">
           <div className="balance_div">
             <div className="calculated">
-              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> result </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${-1 * result} </div></>}
+              {result > 0 ? <><h3>Owes you:</h3><div className="owed"> {result} </div></> : <><h3>You Owe: </h3><div className="you_owe"> ${-1 * result} </div></>}
             </div>
           </div>
             <div className="balance_div">
