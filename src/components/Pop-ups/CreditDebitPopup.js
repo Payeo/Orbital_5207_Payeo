@@ -37,7 +37,6 @@ const CreditDebitPopup = props => {
   }
 
   const handleSubmit = async (e) => {
-    console.log(buttonUsed.current.buttonId);
     e.preventDefault();
     if (balance === "") { 
       alert("Please enter a valid amount.");

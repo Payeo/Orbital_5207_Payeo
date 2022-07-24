@@ -71,7 +71,7 @@ const User = () => {
         <div className="user_profile_container">
           <div className="profile_container">
             <div className="img_container">
-              <img src={Img} alt="avatar" />
+              <img src={user?.avatar || Img} alt="avatar" />
             </div>
             <div className="text_container">
               <h1>{user?.name}</h1>

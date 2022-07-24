@@ -55,9 +55,9 @@ const LoginPopUp = props => {
           email: res.user.email,
           createdAt: Timestamp.fromDate(new Date()),
           isOnline: true,
-        });
+        }, { merge: true });
         setData({
-          email: res.user.email,
+          email: "",
           password: "",
           error: null,
           loading: false,

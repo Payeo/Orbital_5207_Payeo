@@ -64,13 +64,20 @@ const Chat = () => {
       url = dlUrl;
     }
 
-    await addDoc(collection(db, "conversations", id, "messages"), {
-      text,
-      from: currentUser,
-      type: "Message",
-      createdAt: Timestamp.fromDate(new Date()),
-      media: url || "",
-    });
+    if ((!text) && (url === undefined)) {
+      alert("Please enter a message or upload an image before pressing send!");
+    }
+    
+    //eslint-disable-next-line
+    if (!text && url !== undefined || text && url == undefined) {
+      await addDoc(collection(db, "conversations", id, "messages"), {
+        text,
+        from: currentUser,
+        type: "Message",
+        createdAt: Timestamp.fromDate(new Date()),
+        media: url || "",
+      });
+    }
 
     setText("");
     setImg("");
