@@ -30,7 +30,7 @@ Yap Zher Xiang Jason: jasonyapzx@gmail.com\
 \
 Yeo Yu Jie: yeo.yujie@gmail.com\
 \
-Project Link: https://github.com/JasonYapzx/Payeo.git \
+Project Link: https://github.com/Payeo/Orbital_5207_Payeo \
 \
 Currently deployed on Netifly: https://steady-lamington-29fbca.netlify.app/
 
