@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "../components/Chat/SideBar"
+import SideBar from "../components/SideBar/SideBar"
 
 const Home = () => {
   return (

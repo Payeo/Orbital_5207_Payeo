@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Attachment from "./svg/Attachment";
-import BalancePopup from "./Pop-ups/BalancePopUp";
+import Attachment from "../svg/Attachment";
+import BalancePopup from "../Pop-ups/BalancePopUp";
+import GroupBalancePopup from "../Pop-ups/GroupBalancePopUp";
 
-const MessageForm = ({ handleSubmit, text, setText, setImg, user1, user2 }) => {
-
+const MessageForm = ({ handleSubmit, text, setText, setImg, users, currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
  
   const togglePopup = () => {
@@ -41,11 +41,17 @@ const MessageForm = ({ handleSubmit, text, setText, setImg, user1, user2 }) => {
           value="Balance"
           onClick={togglePopup}
           />
-      {isOpen && <BalancePopup
-        user1={user1}
-        user2={user2}
+      {isOpen && users?.length < 2 
+      ? <BalancePopup
+        users={users}
+        currentUser={currentUser}
         handleClose={togglePopup}
-      />}
+      /> 
+      : isOpen && <GroupBalancePopup // For Group Conversations
+      users={users}
+      currentUser={currentUser}
+      handleClose={togglePopup}
+      /> }
     </div>
   );
 };

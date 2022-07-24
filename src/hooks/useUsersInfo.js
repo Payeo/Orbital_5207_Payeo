@@ -21,6 +21,7 @@ import { doc, getDoc } from "firebase/firestore";
               return res;
             })
           );
+  
           setData(response);
           setLoading(false);
           setError(false);
